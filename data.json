@@ -1,0 +1,37 @@
+{
+    "rooms":[
+
+        {
+            "Name" : "Bedroom"
+          
+
+        },
+
+        {
+            "Name" : "Kitchen"
+
+
+        },
+
+        {
+            "Name" : "Hallway"
+
+
+        },
+
+        {
+            "Name" : "Bathroom"
+
+
+        }
+
+
+
+
+
+    ]
+
+
+
+
+}
