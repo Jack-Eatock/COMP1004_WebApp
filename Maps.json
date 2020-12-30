@@ -1,0 +1,40 @@
+{
+  "rooms":
+  [
+    {
+        "name": "Room1",
+        "Colliders":[
+            {
+                "NameOfCollider" : "Coll 1",
+                "X1" : 400,     "Y1" : 400,
+                "X2" : 600,     "Y2" : 600
+            },
+
+            {
+                "NameOfCollider" : "Coll 2",
+                "X1" :  900,     "Y1" : 300 ,
+                "X2" : 1000,     "Y2" : 400 
+            }
+        ]
+
+    },
+
+    {
+        "name" : "Room2",
+        "Colliders":[
+            {
+                "NameOfCollider" : "",
+                "X1" : " ",     "Y1" : " ",
+                "X2" : " ",     "Y2" : " "
+            }
+        ]
+    }
+
+
+
+
+
+
+  ]
+
+}
