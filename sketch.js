@@ -3,53 +3,42 @@
 var playerMovement = {  x : 0, y : 0, };
 var playerSpeed = 4;
 
-var CurrentPlayerPos      = { x: 300,   y : 300  }; // Start pos, also stores player pos
+var CurrentPlayerPos      = { x: 600,   y : 300  }; // Start pos, also stores player pos
 
 // Collision variables \\
 var playerColiderOffsets = 
 { 
-  XTopLeftOffset   : -30, YTopLeftOffset    : -10, 
-  XTopRightOffset  :  30, YTopRightOffset   : -10, 
+  XTopLeftOffset   : -30, YTopLeftOffset    : 15, 
+  XTopRightOffset  :  30, YTopRightOffset   : 15, 
   XBotLeftOffset   : -30, YBotLeftOffset    : 60, 
-  XBotrightOffset  :  30, YBotrightOffset   : 50, 
+  XBotrightOffset  :  30, YBotrightOffset   : 60, 
 }
 
 var showColliders = true;
 
-
-
-// Images to Preload  \\
-let character_FW;
-let room_Bedroom;
-
-// Rooms \\
-const Rooms = {
-  BEDROOM:  'Bedroom',
-  KITCHEN:  'Kitchen',
-  BATHROOM: 'Bathroom',
-  HALLWAY:  'Hallway'
-}
-
-
+var Images = [
+  {img : null}, // 0 - Character
+  {img : null}, // 1 - Room_Bedroom
+  {img : null}, // 2 - Room_Bedroom_Outline
+  {img : null}  // 3 - Hallway_Walls
+]
 
 currentRoom = 0;
 
-
 function preload() {
-  character_FW = loadImage('Sprites/Char_FW_V01.png',  );
-  room_Bedroom = loadImage('Sprites/Room_Bedroom_v001.png');
+  preloadImages()     // prepares all images
+  data = loadJSON('Maps.json');  // loads required data
+}
 
-  
-  // Data
-  data = loadJSON('Maps.json');
+function preloadImages(){
 
+  Images[0].img = loadImage('Sprites/Props/Char_FW_V01.png');
+  Images[1].img = loadImage('Sprites/Bedroom/Room_Bedroom_v001.png');
+  Images[2].img = loadImage('Sprites/Bedroom/Room_Bedroom_Outline.png')
+  Images[3].img = loadImage('Sprites/Hallway/Hallway_Walls.png')
 }
 
 function setup() {
-
-   // SimplifyDataLoading
-  
-
   imageMode(CENTER);
   //rectMode(CENTER);
   
@@ -58,66 +47,77 @@ function setup() {
   cnv.parent("MyCanvas"); // Centred by CSS
 
   let Col = data.rooms[0].name;
-
-
 }
 
 function draw() {
- 
- 
+  background(0);
 
-  background(50);
-  image(room_Bedroom, width/2, height/2);
-  
-  rect(400,400,200,200)
-  rect(900,300,100,100)
+  if (keyIsDown(69)) {currentRoom = 1; } 
+  if (keyIsDown(81)) {currentRoom = 0; } 
 
 
+  //image(Images[1].img, 600, 350);
+  DrawRoom();
   GetInput();
   MoveCharacter();
  
-  
   //if (showColliders) { DisplayColliders };
-
 }
 
-function LoadLevel(room){
-  switch (room){
+function DrawRoom(){
 
-    case Rooms.BEDROOM:
-      break;
+  //if (keyIsDown(65)){ currentRoom = 1 ;}
+  textSize(32);
+  text('CurrentRoom ' + currentRoom, 500, 50);
 
-    case Rooms.KITCHEN:
-      break;
+  // First we need to obtain a reference to all the Images we should load and their positions.
+  var ObjToDraw =  data.rooms[currentRoom].ObjectsToDraw;  
+  var currObj;
 
-    case Rooms.BEDROOM:
-      break;
+  // Loop through each object to draw.
+  for (var imgNum = 0; imgNum < ObjToDraw.length; imgNum++){
+    // Spawn the correct object depending on the type.
+    currObj = ObjToDraw[imgNum]
+    switch (currObj.Type){
 
-    case Rooms.BEDROOM:
-      break;
-  }     
+      case 0: // The object is a Rect()
+        if (currObj.Colour == 1){ stroke(0);fill(0);} // Object is black
+        else {stroke(255);fill(255);}
 
+        rect(currObj.x, currObj.y, currObj.width, currObj.height);
+        break;
 
+      case 1:
+        image(Images[currObj.imgNum].img , currObj.x  , currObj.y ); 
+        break;
+    }
+  }
 }
 
-function DisplayColliders()
-{
+function SwitchLevel(roomNum, x = 0, y = 0){
+  currentRoom = roomNum; // Changes the room that is being displayed.
+
+  // If spawn location is not specifically set use default
+  if (x == 0 && y == 0){
+    CurrentPlayerPos.x = data.rooms[roomNum].spawnLocationX;
+    CurrentPlayerPos.y = data.rooms[roomNum].spawnLocationY;
+  }
+
+  else{ CurrentPlayerPos.x = x; CurrentPlayerPos.y = y;}
 
 }
-
 
 function IsColliding(PosX, PosY, Offsets)
 {
-
-let CordsToCheck =
-[
-  { X : PosX + Offsets.XTopLeftOffset,   Y : PosY + Offsets.YTopLeftOffset },
-  { X : PosX + Offsets.XTopRightOffset,  Y : PosY + Offsets.YTopRightOffset },
-  { X : PosX + Offsets.XBotLeftOffset,   Y : PosY + Offsets.YBotLeftOffset },
-  { X : PosX + Offsets.XBotrightOffset,  Y : PosY + Offsets.YBotrightOffset }
-]
-var PointX;
-var PointY;
+  let CordsToCheck =
+  [
+    { X : PosX + Offsets.XTopLeftOffset,   Y : PosY + Offsets.YTopLeftOffset },
+    { X : PosX + Offsets.XTopRightOffset,  Y : PosY + Offsets.YTopRightOffset },
+    { X : PosX + Offsets.XBotLeftOffset,   Y : PosY + Offsets.YBotLeftOffset },
+    { X : PosX + Offsets.XBotrightOffset,  Y : PosY + Offsets.YBotrightOffset }
+  ]
+  var PointX;
+  var PointY;
 
  // Now we know where the player will be. Calculate if the new pos is overlapping any colliders.
  var Cols =  data.rooms[currentRoom].Colliders;  // Grab the colliders for this room. Optimsie later!
@@ -133,7 +133,13 @@ var PointY;
       if (PointY >= Cols[i].Y1 && PointY <= Cols[i].Y2) // Within Y bounds
       {
           // Okay so the new position will collide with this specific collider. Now what?  
-          Colliding = true;
+          // Check what affect the collision should have.
+          switch (Cols[i].Type){
+            case 0: Colliding = true; break;
+            case 1: SwitchLevel(Cols[i].Room, Cols[i].SpwnX, Cols[i].SpwnY);    break;
+          }
+
+          
       }
     }
   }
@@ -146,14 +152,13 @@ var PointY;
   if (PointX >=  width || PointX <= 0 || PointY <= 0 || PointY >= height) {Colliding = true;}
  }
 
- 
  return Colliding;
 }
 
 function MoveCharacter()
 {
   textSize(32);
-  text('Nx' + CurrentPlayerPos.x + ' Ny' + CurrentPlayerPos.y, 300, 30);
+  text('Nx' + CurrentPlayerPos.x + ' Ny' + CurrentPlayerPos.y, 200, 50);
 
   var xAddition = 0; // X Change in movement
   var yAddition = 0; // Y .. 
@@ -174,29 +179,29 @@ function MoveCharacter()
   if (!IsColliding(CurrentPlayerPos.x + xAddition, CurrentPlayerPos.y + yAddition, playerColiderOffsets)) {
     CurrentPlayerPos.x += xAddition;
     CurrentPlayerPos.y += yAddition;
-    text('Collision : false ', 800, 30);
-  } else{text('Collision : true ', 800, 30);}
+    text('Collision : false ', 800, 50);
+  } else{text('Collision : true ', 800, 50);}
 
-  image(character_FW , CurrentPlayerPos.x  , CurrentPlayerPos.y ); 
+  image(Images[0].img , CurrentPlayerPos.x  , CurrentPlayerPos.y ); 
 }
 
 
 function GetInput() {
 
-  if (keyIsDown(LEFT_ARROW) && keyIsDown(RIGHT_ARROW))  {  playerMovement.x =  0; }
+  // Keycode 65 = a   Keycode 87 = s
+  if (keyIsDown(65) && keyIsDown(68))  {  playerMovement.x =  0; }
   else{
-
-    if (keyIsDown(LEFT_ARROW))  {  playerMovement.x = -1; }
-    if (keyIsDown(RIGHT_ARROW)) {  playerMovement.x =  1; }
-    if (!keyIsDown(RIGHT_ARROW) && !keyIsDown(LEFT_ARROW) ) { playerMovement.x = 0;}
+    if (keyIsDown(65)) {  playerMovement.x = -1; } 
+    if (keyIsDown(68)) {  playerMovement.x =  1; } 
+    if (!keyIsDown(65) && !keyIsDown(68) ) { playerMovement.x = 0;}
   }
-
-  if (keyIsDown(UP_ARROW) && keyIsDown(DOWN_ARROW))  {  playerMovement.y =  0; }
+  
+  // keycode 68 = d   Keycode 83 = w
+  if (keyIsDown(87) && keyIsDown(83))  {  playerMovement.y =  0; }
   else{
-
-    if (keyIsDown(UP_ARROW))   {  playerMovement.y =  -1; }
-    if (keyIsDown(DOWN_ARROW)) {  playerMovement.y =   1; }
-    if (!keyIsDown(UP_ARROW) && !keyIsDown(DOWN_ARROW) ) { playerMovement.y = 0;}
+    if (keyIsDown(87)) {  playerMovement.y =  -1; }
+    if (keyIsDown(83)) {  playerMovement.y =   1; }
+    if (!keyIsDown(87) && !keyIsDown(83) ) { playerMovement.y = 0;}
   }
  
 }
