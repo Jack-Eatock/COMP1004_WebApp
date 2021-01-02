@@ -3,7 +3,7 @@
 var playerMovement = {  x : 0, y : 0, };
 var playerSpeed = 4;
 
-var CurrentPlayerPos      = { x: 600,   y : 300  }; // Start pos, also stores player pos
+var CurrentPlayerPos = { x: 600,   y : 300  }; // Start pos, also stores player pos
 
 // Collision variables \\
 var playerColiderOffsets = 
@@ -20,7 +20,12 @@ var Images = [
   {img : null}, // 0 - Character
   {img : null}, // 1 - Room_Bedroom
   {img : null}, // 2 - Room_Bedroom_Outline
-  {img : null}  // 3 - Hallway_Walls
+  {img : null}, // 3 - Hallway_Walls
+  {img : null}, // 4 - RoomBedroomGarry_Outline
+  {img : null}, // 5 - RoomBedroomSam_Outline
+  {img : null}, // 6 - RoomKitchen
+  {img : null}, // 7 - RoomBedroomTod_Outline
+  {img : null}  // 8 - RoomBedroomAlex_Outline
 ]
 
 currentRoom = 0;
@@ -36,6 +41,11 @@ function preloadImages(){
   Images[1].img = loadImage('Sprites/Bedroom/Room_Bedroom_v001.png');
   Images[2].img = loadImage('Sprites/Bedroom/Room_Bedroom_Outline.png')
   Images[3].img = loadImage('Sprites/Hallway/Hallway_Walls.png')
+  Images[4].img = loadImage('Sprites/GarryBedroom/Room_BedroomGarry_Outline.png')
+  Images[5].img = loadImage('Sprites/SamBedroom/Room_BedroomSam_Outline.png')
+  Images[6].img = loadImage('Sprites/Kitchen/Room_Kitchen_Outline.png')
+  Images[7].img = loadImage('Sprites/TodBedroom/Room_BedroomTod_Outline.png')
+  Images[8].img = loadImage('Sprites/AlexBedroom/Room_BedroomAlex_Outline.png')
 }
 
 function setup() {
@@ -53,7 +63,7 @@ function draw() {
   background(0);
 
   if (keyIsDown(69)) {currentRoom = 1; } 
-  if (keyIsDown(81)) {currentRoom = 0; } 
+  if (keyIsDown(81)) {currentRoom = 6; } 
 
 
   //image(Images[1].img, 600, 350);
@@ -63,6 +73,11 @@ function draw() {
  
   //if (showColliders) { DisplayColliders };
 }
+
+function PlayerTriedToInteract(){
+
+}
+
 
 function DrawRoom(){
 
@@ -138,8 +153,6 @@ function IsColliding(PosX, PosY, Offsets)
             case 0: Colliding = true; break;
             case 1: SwitchLevel(Cols[i].Room, Cols[i].SpwnX, Cols[i].SpwnY);    break;
           }
-
-          
       }
     }
   }
@@ -203,7 +216,10 @@ function GetInput() {
     if (keyIsDown(83)) {  playerMovement.y =   1; }
     if (!keyIsDown(87) && !keyIsDown(83) ) { playerMovement.y = 0;}
   }
- 
-}
+
+  // Player tries to Interact
+  if (keyIsDown(32)){PlayerTriedToInteract();}
+
+} 
 
 

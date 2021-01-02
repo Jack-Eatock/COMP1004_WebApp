@@ -2,15 +2,17 @@
   "rooms":
   [
     {
-        "name": "Room1",
+        "name": "Bedroom",
         "spawnLocationX" : 820,
         "spawnLocationY" : 350,
 
         "ObjectsToDraw":[
-            {"Type" : 1, "x" : 590 ,"y" : 353, "imgNum" : 2 },
+            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 2 },
             {"Type" : 0, "Colour" : 0, "x" : 321 , "y" : 409 ,"width" : 227 , "height" : 124},
             {"Type" : 0, "Colour" : 0, "x" : 321 , "y" : 173 ,"width" : 76 , "height"  : 236},
             {"Type" : 0, "Colour" : 0, "x" : 397 , "y" : 173 ,"width" : 171, "height"  : 76}
+
+
         ],
 
         "Colliders":[
@@ -29,25 +31,126 @@
     },
 
     {
-        "name" : "Room2",
-        "spawnLocationX" : 80,
+        "name" : "Hallway",
+        "spawnLocationX" : 700,
         "spawnLocationY" : 350,
 
         "ObjectsToDraw":[
-            {"Type" : 1, "x" : 590 ,"y" : 353, "imgNum" : 3 }
-          
+            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 3 }
         ],
 
         "Colliders":[
             
-            {"NameOfCollider" : "Wall Left" , "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 15, "Y2" : 700},
-            {"NameOfCollider" : "Wall Top"  , "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 1200,"Y2" : 173},
-            {"NameOfCollider" : "Wall Right", "Type" : 0, "X1" : 1170,"Y1": 0, "X2" : 1200,"Y2" : 700},
-            {"NameOfCollider" : "Wall Bot"  , "Type" : 0, "X1" : 0,"Y1": 533, "X2" : 1200,"Y2" : 700},
-            {"NameOfCollider" : "Doorway"  ,  "Type" : 1, "Room" : 0,  "SpwnX" : 820, "SpwnY" : 350, "X1" : 4,"Y1": 289, "X2" : 42,"Y2" : 422},
-            {"NameOfCollider" : "Doorway"  ,  "Type" : 1, "Room" : 1,  "SpwnX" : 340, "SpwnY" : 450, "X1" : 275,"Y1": 147, "X2" : 408,"Y2" : 186}
+            {"NameOfCollider" : "Wall Left" ,  "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 15, "Y2" : 700},
+            {"NameOfCollider" : "Wall Top"  ,  "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 1200,"Y2" : 173},
+            {"NameOfCollider" : "Wall Right",  "Type" : 0, "X1" : 1170,"Y1": 0, "X2" : 1200,"Y2" : 700},
+            {"NameOfCollider" : "Wall Bot"  ,  "Type" : 0, "X1" : 0,"Y1": 541, "X2" : 1200,"Y2" : 700},
+            {"NameOfCollider" : "Door-Main",   "Type" : 1, "Room" : 0,  "SpwnX" : 820, "SpwnY" : 350, "X1" : 4,"Y1": 289, "X2" : 42,"Y2" : 422},
+            {"NameOfCollider" : "Door-Gary",   "Type" : 1, "Room" : 2,  "SpwnX" : 740, "SpwnY" : 465, "X1" : 275,"Y1": 147, "X2" : 408,"Y2" : 186},
+            {"NameOfCollider" : "Door-Sam",    "Type" : 1, "Room" : 3,  "SpwnX" : 460, "SpwnY" : 200, "X1" : 292,"Y1": 534, "X2" : 433,"Y2" : 564},
+            {"NameOfCollider" : "Door-Kitchen","Type" : 1, "Room" : 4,  "SpwnX" : 75, "SpwnY" : 380, "X1" : 1163,"Y1": 279, "X2" : 1200,"Y2" : 420},
+            {"NameOfCollider" : "Door-Tod"  ,  "Type" : 1, "Room" : 5,  "SpwnX" : 393, "SpwnY" : 190, "X1" : 767,"Y1": 534, "X2" : 908,"Y2" : 564},
+            {"NameOfCollider" : "Door-Alex" ,  "Type" : 1, "Room" : 6,  "SpwnX" : 772.5, "SpwnY" : 500, "X1" : 767,"Y1": 151, "X2" : 908,"Y2" : 181}
         
         ]
+    },
+
+    {
+        "name": "Gary's Room",
+        "spawnLocationX" : 820,
+        "spawnLocationY" : 350,
+
+        "ObjectsToDraw":[
+            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 4 },
+            {"Type" : 0, "Colour" : 0, "x" : 321 , "y" : 409 ,"width" : 227 , "height" : 124},
+            {"Type" : 0, "Colour" : 0, "x" : 321 , "y" : 173 ,"width" : 76 , "height"  : 236},
+            {"Type" : 0, "Colour" : 0, "x" : 397 , "y" : 173 ,"width" : 171, "height"  : 76}
+        ],
+
+        "Colliders":[
+            {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 321, "Y2" : 700},
+            {"NameOfCollider" : "Wall Top",   "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 1200,"Y2" : 173},
+            {"NameOfCollider" : "Wall Right", "Type" : 0, "X1" : 859,"Y1": 0, "X2" : 1200,"Y2" : 700},
+            {"NameOfCollider" : "Wall Bot"  , "Type" : 0, "X1" : 0,"Y1": 533, "X2" : 1200,"Y2" : 700},
+            {"NameOfCollider" : "Doorway", "Type" : 1, "Room" : 1, "SpwnX" : 360, "SpwnY" : 175, "X1" : 667,"Y1": 526, "X2" : 808,"Y2" : 541},
+
+            {"NameOfCollider" : "Bed",   "Type" : 0, "X1" : 321,"Y1": 409, "X2" : 548,"Y2" : 533},
+            {"NameOfCollider" : "Desk1", "Type" : 0,"X1" : 321,"Y1": 173, "X2" : 397,"Y2" : 409},
+            {"NameOfCollider" : "Desk1", "Type" : 0, "X1" : 397,"Y1": 173, "X2" : 568,"Y2" : 249}
+
+        ]
+    },
+
+    {
+        "name": "Sam's Room",
+        "spawnLocationX" : 820,
+        "spawnLocationY" : 350,
+
+        "ObjectsToDraw":[
+            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 5 }
+ 
+        ],
+
+        "Colliders":[
+            {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 321, "Y2" : 700},
+            {"NameOfCollider" : "Wall Top",   "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 1200,"Y2" : 173},
+            {"NameOfCollider" : "Wall Right", "Type" : 0, "X1" : 859,"Y1": 0, "X2" : 1200,"Y2" : 700},
+            {"NameOfCollider" : "Wall Bot"  , "Type" : 0, "X1" : 0,"Y1": 533, "X2" : 1200,"Y2" : 700},
+            {"NameOfCollider" : "Doorway", "Type" : 1, "Room" : 1, "SpwnX" : 360, "SpwnY" : 450, "X1" : 384,"Y1": 150, "X2" : 525,"Y2" : 180}
+        ]
+    },
+
+    
+    {
+        "name": "Kitchen",
+        "spawnLocationX" : 820,
+        "spawnLocationY" : 350,
+
+        "ObjectsToDraw":[
+            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 6 }
+ 
+        ],
+
+        "Colliders":[
+
+            {"NameOfCollider" : "Doorway"  ,  "Type" : 1, "Room" : 1,  "SpwnX" : 1130, "SpwnY" : 345, "X1" : 8,"Y1": 320, "X2" : 38,"Y2" : 461}
+        
+        ]
+    },
+
+    {
+        "name": "Tod's Room",
+        "spawnLocationX" : 820,
+        "spawnLocationY" : 350,
+
+        "ObjectsToDraw":[
+            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 7 }
+ 
+        ],
+
+        "Colliders":[
+         
+            {"NameOfCollider" : "Doorway", "Type" : 1, "Room" : 1, "SpwnX" : 837, "SpwnY" : 450, "X1" : 384,"Y1": 150, "X2" : 525,"Y2" : 180}
+        ]
+    },
+
+    {
+        "name": "Alex's Room",
+        "spawnLocationX" : 820,
+        "spawnLocationY" : 350,
+
+        "ObjectsToDraw":[
+            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 8 }
+ 
+        ],
+
+        "Colliders":[
+         
+            {"NameOfCollider" : "Doorway", "Type" : 1, "Room" : 1, "SpwnX" : 837, "SpwnY" : 192, "X1" : 702,"Y1": 559, "X2" : 843,"Y2" : 589}
+        ]
     }
+
+
+
   ]
 }
