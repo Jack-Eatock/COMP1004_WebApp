@@ -15,40 +15,24 @@ var playerColiderOffsets =
 }
 
 var showColliders = true;
-
-var Images = [
-  {img : null}, // 0 - Character
-  {img : null}, // 1 - Room_Bedroom
-  {img : null}, // 2 - Room_Bedroom_Outline
-  {img : null}, // 3 - Hallway_Walls
-  {img : null}, // 4 - RoomBedroomGarry_Outline
-  {img : null}, // 5 - RoomBedroomSam_Outline
-  {img : null}, // 6 - RoomKitchen
-  {img : null}, // 7 - RoomBedroomTod_Outline
-  {img : null}  // 8 - RoomBedroomAlex_Outline
-]
+var Images = []
 
 currentRoom = 0;
 
 function preload() {
-  preloadImages()     // prepares all images
   data = loadJSON('Maps.json');  // loads required data
 }
 
-function preloadImages(){
-
-  Images[0].img = loadImage('Sprites/Props/Char_FW_V01.png');
-  Images[1].img = loadImage('Sprites/Bedroom/Room_Bedroom_v001.png');
-  Images[2].img = loadImage('Sprites/Bedroom/Room_Bedroom_Outline.png')
-  Images[3].img = loadImage('Sprites/Hallway/Hallway_Walls.png')
-  Images[4].img = loadImage('Sprites/GarryBedroom/Room_BedroomGarry_Outline.png')
-  Images[5].img = loadImage('Sprites/SamBedroom/Room_BedroomSam_Outline.png')
-  Images[6].img = loadImage('Sprites/Kitchen/Room_Kitchen_Outline.png')
-  Images[7].img = loadImage('Sprites/TodBedroom/Room_BedroomTod_Outline.png')
-  Images[8].img = loadImage('Sprites/AlexBedroom/Room_BedroomAlex_Outline.png')
+function SetupImages(){
+  var imagesToLoad = data.ImagesToPreload;
+  for (var x = 0; x < imagesToLoad.length; x++){
+    var newImage = loadImage(imagesToLoad[x].url);
+    Images.push(newImage);
+  }
 }
 
 function setup() {
+  SetupImages()     // prepares all images
   imageMode(CENTER);
   //rectMode(CENTER);
   
@@ -62,9 +46,8 @@ function setup() {
 function draw() {
   background(0);
 
-  if (keyIsDown(69)) {currentRoom = 1; } 
-  if (keyIsDown(81)) {currentRoom = 6; } 
 
+  CheatTeleportToRoom(true);
 
   //image(Images[1].img, 600, 350);
   DrawRoom();
@@ -76,6 +59,18 @@ function draw() {
 
 function PlayerTriedToInteract(){
 
+}
+
+// Debug function \\
+function CheatTeleportToRoom(active)
+{
+  if (!active){return;}
+  if (keyIsDown(49)) {currentRoom = 1; } 
+  if (keyIsDown(50)) {currentRoom = 2; } 
+  if (keyIsDown(51)) {currentRoom = 3; } 
+  if (keyIsDown(52)) {currentRoom = 4; } 
+  if (keyIsDown(53)) {currentRoom = 5; } 
+  if (keyIsDown(54)) {currentRoom = 6; } 
 }
 
 
@@ -103,7 +98,7 @@ function DrawRoom(){
         break;
 
       case 1:
-        image(Images[currObj.imgNum].img , currObj.x  , currObj.y ); 
+        image(Images[currObj.imgNum] , currObj.x  , currObj.y ); 
         break;
     }
   }
@@ -195,7 +190,7 @@ function MoveCharacter()
     text('Collision : false ', 800, 50);
   } else{text('Collision : true ', 800, 50);}
 
-  image(Images[0].img , CurrentPlayerPos.x  , CurrentPlayerPos.y ); 
+  image(Images[0] , CurrentPlayerPos.x  , CurrentPlayerPos.y ); 
 }
 
 
