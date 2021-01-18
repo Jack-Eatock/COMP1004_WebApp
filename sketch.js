@@ -1,9 +1,33 @@
+// Main GamePlay vars
+var RateDecresePerFrameE = 0.124;
+var RateDecresePerFrameH = 0.018;
+var RateDecresePerFrameS = 0.126;
+var RateDecresePerFrameSY = 0.01;
 
 // Movement variables \\
 var playerMovement = {  x : 0, y : 0, };
 var playerSpeed = 4;
-
 var CurrentPlayerPos = { x: 600,   y : 300  }; // Start pos, also stores player pos
+
+// UI
+var PlayerNotice = "Welcome to isolation!";
+
+StudyPercent = { p : 100,
+  set percent(val){ if (val < 0 ){ this.p = 0 } else if (val > 100){this.p = 100;} else {this.p = val;}},
+  get percent (){return this.p;}}
+
+HungerPercent = { p : 100,
+  set percent(val){ if (val < 0 ){ this.p = 0 } else if (val > 100){this.p = 100;} else {this.p = val;}},
+  get percent (){return this.p;}}
+
+EnergyPercent = { p : 100,
+  set percent(val){ if (val < 0 ){ this.p = 0 } else if (val > 100){this.p = 100;} else {this.p = val;}},
+  get percent (){return this.p;}}
+
+SanityPercent = { p : 100,
+  set percent(val){ if (val < 0 ){ this.p = 0 } else if (val > 100){this.p = 100;} else {this.p = val;}},
+  get percent (){return this.p;}}
+
 
 // Collision variables \\
 var playerColiderOffsets = 
@@ -14,10 +38,15 @@ var playerColiderOffsets =
   XBotrightOffset  :  30, YBotrightOffset   : 60, 
 }
 
-var showColliders = true;
+// Loading rooms
 var Images = []
+var currentRoom = 0;
 
-currentRoom = 0;
+// Triggers
+var curTrigEvent = 0;
+
+var modeDebug = false;
+var GameBeingPlayed = 0;
 
 function preload() {
   data = loadJSON('Maps.json');  // loads required data
@@ -40,25 +69,63 @@ function setup() {
   var cnv = createCanvas(1200, 700);
   cnv.parent("MyCanvas"); // Centred by CSS
 
-  let Col = data.rooms[0].name;
+  //let Col = data.rooms[0].name;
 }
 
 function draw() {
+  // Set background to black.
   background(0);
 
 
+  // Debug Tools \\
   CheatTeleportToRoom(true);
+  // Debug Tools \\
+  
+  switch (GameBeingPlayed){
+    case (0) : 
+      DrawRoom();
+      GetInput();
+      MoveCharacter();
+      break;
+    
+    // Sleep Mini Game, Cloud Jumping. 
+    case (1) : 
 
-  //image(Images[1].img, 600, 350);
-  DrawRoom();
-  GetInput();
-  MoveCharacter();
- 
-  //if (showColliders) { DisplayColliders };
+      break;
+    
+  }
+
+  if (!modeDebug){DrawUI();}
+
+  // Notifications
+  UpdateText(3, 'Notice : ' + PlayerNotice);
+  
 }
 
 function PlayerTriedToInteract(){
 
+  // Check which object is currently interactable.
+  switch (curTrigEvent) {
+    case (0):  break; // Nothin interactable.
+    case (1):  StudyPercent.percent  += 10; break; // Nothin interactable.
+    case (2): EnergyPercent.percent += 10; break; // Nothin interactable.
+  
+    default:
+      break;
+  }
+
+}
+
+function PlayerCouldInteract(event){
+  var startText = "Press SPACE to INTERACT with : ";
+  switch (event) {
+    case (0):  break; // Nothin interactable.
+    case (1): PlayerNotice = startText + "Computer!"; break; // Pc
+    case (2): PlayerNotice = startText + "Bed!"; break; // Pc
+  
+    default:
+      break;
+  }
 }
 
 // Debug function \\
@@ -71,14 +138,14 @@ function CheatTeleportToRoom(active)
   if (keyIsDown(52)) {currentRoom = 4; } 
   if (keyIsDown(53)) {currentRoom = 5; } 
   if (keyIsDown(54)) {currentRoom = 6; } 
+  if (keyIsDown(55)) {currentRoom = 0; } 
 }
 
-
+// Runs every frame.
 function DrawRoom(){
 
   //if (keyIsDown(65)){ currentRoom = 1 ;}
-  textSize(32);
-  text('CurrentRoom ' + currentRoom, 500, 50);
+  if (modeDebug){UpdateText(1, 'CurrentRoom ' + currentRoom)};
 
   // First we need to obtain a reference to all the Images we should load and their positions.
   var ObjToDraw =  data.rooms[currentRoom].ObjectsToDraw;  
@@ -112,9 +179,7 @@ function SwitchLevel(roomNum, x = 0, y = 0){
     CurrentPlayerPos.x = data.rooms[roomNum].spawnLocationX;
     CurrentPlayerPos.y = data.rooms[roomNum].spawnLocationY;
   }
-
   else{ CurrentPlayerPos.x = x; CurrentPlayerPos.y = y;}
-
 }
 
 function IsColliding(PosX, PosY, Offsets)
@@ -132,6 +197,7 @@ function IsColliding(PosX, PosY, Offsets)
  // Now we know where the player will be. Calculate if the new pos is overlapping any colliders.
  var Cols =  data.rooms[currentRoom].Colliders;  // Grab the colliders for this room. Optimsie later!
  var Colliding = false;     
+ var eventTrigFlag = false; // Ensures a new event trig is found. Or set default.
 
  for (var i = 0; i < Cols.length; i++) { // Check all the colliders within the room.
   for (var j = 0; j < CordsToCheck.length; j++){
@@ -145,12 +211,15 @@ function IsColliding(PosX, PosY, Offsets)
           // Okay so the new position will collide with this specific collider. Now what?  
           // Check what affect the collision should have.
           switch (Cols[i].Type){
-            case 0: Colliding = true; break;
-            case 1: SwitchLevel(Cols[i].Room, Cols[i].SpwnX, Cols[i].SpwnY);    break;
+            case 0: Colliding = true; break; // basic
+            case 1: SwitchLevel(Cols[i].Room, Cols[i].SpwnX, Cols[i].SpwnY); break; // doors
+            case 2: PlayerCouldInteract(Cols[i].Event); eventTrigFlag = true; curTrigEvent = Cols[i].Event;  // Trigger
           }
       }
     }
   }
+  // If no trig event found reset
+  if (!eventTrigFlag){curTrigEvent = 0; PlayerNotice = "null";}
  }
 
  // Make sure the player does not go out side the canvas border.
@@ -165,9 +234,8 @@ function IsColliding(PosX, PosY, Offsets)
 
 function MoveCharacter()
 {
-  textSize(32);
-  text('Nx' + CurrentPlayerPos.x + ' Ny' + CurrentPlayerPos.y, 200, 50);
-
+  if (modeDebug){ UpdateText(2, 'Nx' + CurrentPlayerPos.x + ' Ny' + CurrentPlayerPos.y);}
+ 
   var xAddition = 0; // X Change in movement
   var yAddition = 0; // Y .. 
 
@@ -187,8 +255,8 @@ function MoveCharacter()
   if (!IsColliding(CurrentPlayerPos.x + xAddition, CurrentPlayerPos.y + yAddition, playerColiderOffsets)) {
     CurrentPlayerPos.x += xAddition;
     CurrentPlayerPos.y += yAddition;
-    text('Collision : false ', 800, 50);
-  } else{text('Collision : true ', 800, 50);}
+    if (modeDebug){UpdateText(0,"Collision : false")}  
+  } else{ if (modeDebug){UpdateText(0,"Collision : true")}}
 
   image(Images[0] , CurrentPlayerPos.x  , CurrentPlayerPos.y ); 
 }
@@ -213,8 +281,60 @@ function GetInput() {
   }
 
   // Player tries to Interact
-  if (keyIsDown(32)){PlayerTriedToInteract();}
+  if (keyIsDown(32)){ PlayerTriedToInteract();}
 
 } 
+
+
+function UpdateText(ref, newText){
+  // Default vals
+  noStroke(0); fill(255); textSize(20); textAlign(LEFT);
+
+  switch(ref){
+    case (0): { text(newText, 800, 25); break;}
+    case (1): { text(newText, 500, 25); break;}
+    case (2): { text(newText, 200, 25); break;}
+    case (3): {textAlign(CENTER); text(newText, width/2, 90); break;}
+  }
+
+
+}
+
+
+function DrawUI(){
+
+    // Apply the change per frame to each variable bar.
+    StudyPercent.percent -= RateDecresePerFrameS;
+    HungerPercent.percent -= RateDecresePerFrameH;
+    EnergyPercent.percent -= RateDecresePerFrameE;
+
+    // For each that has run out, start reducing sanity.
+    if (StudyPercent.percent  == 0){ SanityPercent.percent -= RateDecresePerFrameSY}
+    if (HungerPercent.percent == 0){ SanityPercent.percent -= RateDecresePerFrameSY}
+    if (EnergyPercent.percent == 0){ SanityPercent.percent -= RateDecresePerFrameSY}
+
+    // First draw the bars of colour depending on their values
+    noStroke();  textSize(20); textAlign(CENTER);
+    fill(18,130,84);  rect(width / 2 + 70 , 22, StudyPercent.percent,  12);  // Study
+    fill(147,10,10);  rect(width / 2 - 50 , 22, HungerPercent.percent, 12);  // Hunger
+    fill(10,104,147); rect(width / 2 - 170, 22, EnergyPercent.percent, 12);  // Energy
+    fill(107,13,156); rect(width / 2 - 170, 40, (SanityPercent.percent / 100) * 340 , 12); // Sanity
+
+    /// Now overlay the image of the outline over the top, this allows for 
+    // interesting designs.
+    stroke(255); fill(255); textSize(20); textAlign(CENTER);
+    image(Images[12] , width/2 , 28); 
+    image(Images[12] , width/2 - 120 , 28);
+    image(Images[12] , width/2 + 120 , 28);
+    image(Images[13] , width/2 , 46); 
+
+    // Finally add the text
+    noStroke(); fill(255); textSize(15); textAlign(CENTER);
+    text("Hunger", width/2, 15);
+    text("Energy", width/2 - 120, 15);
+    text("Study", width/2 + 120, 15);
+}
+
+
 
 

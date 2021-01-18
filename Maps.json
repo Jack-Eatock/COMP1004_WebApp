@@ -7,24 +7,23 @@
         "spawnLocationY" : 350,
 
         "ObjectsToDraw":[
-            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 2 },
-            {"Type" : 0, "Colour" : 0, "x" : 321 , "y" : 409 ,"width" : 227 , "height" : 124},
-            {"Type" : 0, "Colour" : 0, "x" : 321 , "y" : 173 ,"width" : 76 , "height"  : 236},
-            {"Type" : 0, "Colour" : 0, "x" : 397 , "y" : 173 ,"width" : 171, "height"  : 76}
-
+            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 2 }        
         ],
 
         "Colliders":[
             {"NameOfCollider" : "Doorway", "Type" : 1, "Room" : 1, "SpwnX" : 80, "SpwnY" : 350, "X1" : 856,"Y1": 324, "X2" : 874,"Y2" : 376},
+
             {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 321, "Y2" : 700},
             {"NameOfCollider" : "Wall Top",   "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 1200,"Y2" : 173},
             {"NameOfCollider" : "Wall Right", "Type" : 0, "X1" : 859,"Y1": 0, "X2" : 1200,"Y2" : 700},
             {"NameOfCollider" : "Wall Bot"  , "Type" : 0, "X1" : 0,"Y1": 533, "X2" : 1200,"Y2" : 700},
            
-
-            {"NameOfCollider" : "Bed",   "Type" : 0, "X1" : 321,"Y1": 409, "X2" : 548,"Y2" : 533},
+            {"NameOfCollider" : "Bed",   "Type" : 0, "X1" : 321,"Y1": 420, "X2" : 584,"Y2" : 533},
             {"NameOfCollider" : "Desk1", "Type" : 0,"X1" : 321,"Y1": 173, "X2" : 397,"Y2" : 409},
-            {"NameOfCollider" : "Desk1", "Type" : 0, "X1" : 397,"Y1": 173, "X2" : 568,"Y2" : 249}
+            {"NameOfCollider" : "Desk1", "Type" : 0, "X1" : 397,"Y1": 173, "X2" : 568,"Y2" : 249},
+
+            {"NameOfCollider" : "Desk1", "Type" : 2, "Event" : 1 ,"X1" : 410,"Y1": 201, "X2" : 557,"Y2" : 303},
+            {"NameOfCollider" : "Desk1", "Type" : 2, "Event" : 2 ,"X1" : 400,"Y1": 393, "X2" : 615,"Y2" : 533}
 
         ]
 
@@ -56,6 +55,7 @@
             {"NameOfCollider" : "Door-Alex" ,  "Type" : 1, "Room" : 6,  "SpwnX" : 772.5, "SpwnY" : 500, "X1" : 785,"Y1": 158, "X2" : 889,"Y2" : 176}
         
         ]
+
     },
 
     {
@@ -83,6 +83,7 @@
             {"NameOfCollider" : "Desk1", "Type" : 0, "X1" : 397,"Y1": 173, "X2" : 568,"Y2" : 249}
 
         ]
+
     },
 
     {
@@ -104,6 +105,7 @@
             {"NameOfCollider" : "Wall Bot"  , "Type" : 0, "X1" : 0,"Y1": 533, "X2" : 1200,"Y2" : 700}
            
         ]
+
     },
 
     
@@ -125,6 +127,7 @@
             {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0 , "Y1" : 0, "X2" : 30, "Y2" : 700},
             {"NameOfCollider" : "Wall Right",  "Type" : 0, "X1" : 1170 , "Y1" : 0, "X2" : 1200, "Y2" : 700}
         ]
+        
     },
 
     {
@@ -147,6 +150,7 @@
             {"NameOfCollider" : "Wall Bot",   "Type" : 0, "X1" : 0, "Y1" : 563, "X2" : 970, "Y2" : 703},
             {"NameOfCollider" : "Wall RBot",  "Type" : 0, "X1" : 956, "Y1" : 350, "X2" : 1200, "Y2" : 700}
         ]
+
     },
 
     {
@@ -187,7 +191,10 @@
       {"Index" : 8,  "url" : "Sprites/AlexBedroom/Room_BedroomAlex_Outline.png"},
       {"Index" : 9,  "url" : "Sprites/Characters/Char_Alex.png"},
       {"Index" : 10, "url" : "Sprites/Characters/Char_Sam.png"},
-      {"Index" : 11, "url" : "Sprites/Characters/Char_Tod.png"}
+      {"Index" : 11, "url" : "Sprites/Characters/Char_Tod.png"},
+
+      {"Index" : 12, "url" : "Sprites/Props/UI_Bar.png"},
+      {"Index" : 13, "url" : "Sprites/Props/UI_Sanity.png"}
 
   ]
 }
