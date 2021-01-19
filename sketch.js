@@ -1,7 +1,7 @@
 // Main GamePlay vars
-var RateDecresePerFrameE = 0.124;
+var RateDecresePerFrameE = 0.017;
 var RateDecresePerFrameH = 0.018;
-var RateDecresePerFrameS = 0.126;
+var RateDecresePerFrameS = 0.026;
 var RateDecresePerFrameSY = 0.01;
 
 // Movement variables \\
@@ -38,6 +38,10 @@ var playerColiderOffsets =
   XBotrightOffset  :  30, YBotrightOffset   : 60, 
 }
 
+// Animation
+var AnimTimers = [];
+var animationIdentity = 0;
+
 // Loading rooms
 var Images = []
 var currentRoom = 0;
@@ -47,6 +51,13 @@ var curTrigEvent = 0;
 
 var modeDebug = false;
 var GameBeingPlayed = 0;
+
+// Animating
+var curFrame = 0; // iterates every frame, updates tickClock every 60. (a second)
+var tickClock = 0; // will keep track of seconds, reset every minute. ( 60 secs)
+
+//var clockIncFrames = 60; // Num frames passed to increment clock.  60 is a second
+var clockMax = 6; // How many seconds pass before resting clock
 
 function preload() {
   data = loadJSON('Maps.json');  // loads required data
@@ -76,7 +87,6 @@ function draw() {
   // Set background to black.
   background(0);
 
-
   // Debug Tools \\
   CheatTeleportToRoom(true);
   // Debug Tools \\
@@ -90,15 +100,28 @@ function draw() {
     
     // Sleep Mini Game, Cloud Jumping. 
     case (1) : 
-
-      break;
-    
+      CloudGameDisplay();
+      break;     
   }
 
   if (!modeDebug){DrawUI();}
 
   // Notifications
-  UpdateText(3, 'Notice : ' + PlayerNotice);
+  //UpdateText(3, 'Notice : ' + PlayerNotice);
+//  UpdateText(3, tickClock);
+
+
+
+
+  curFrame++;
+  tickClock = curFrame / 60;
+
+  // Calculating when a second has passed ( every 60 frames.)
+  //if (curFrame++ > clockIncFrames) {
+   // curFrame = 0; // if a second has passed increment tickClock, but check it is not over 60 seconds.
+   // if (tickClock++ >= clockMax){tickClock = 0;}} 
+   // tickClock++;
+
   
 }
 
@@ -108,7 +131,7 @@ function PlayerTriedToInteract(){
   switch (curTrigEvent) {
     case (0):  break; // Nothin interactable.
     case (1):  StudyPercent.percent  += 10; break; // Nothin interactable.
-    case (2): EnergyPercent.percent += 10; break; // Nothin interactable.
+    case (2):  EnergyPercent.percent += 10; break; // Nothin interactable.
   
     default:
       break;
@@ -147,6 +170,8 @@ function DrawRoom(){
   //if (keyIsDown(65)){ currentRoom = 1 ;}
   if (modeDebug){UpdateText(1, 'CurrentRoom ' + currentRoom)};
 
+  // DISPLAY STATIC IMAGES \\
+
   // First we need to obtain a reference to all the Images we should load and their positions.
   var ObjToDraw =  data.rooms[currentRoom].ObjectsToDraw;  
   var currObj;
@@ -164,12 +189,64 @@ function DrawRoom(){
         rect(currObj.x, currObj.y, currObj.width, currObj.height);
         break;
 
-      case 1:
+      case 1: // Displaying a still image
         image(Images[currObj.imgNum] , currObj.x  , currObj.y ); 
         break;
     }
   }
-}
+
+  // DISPLAY ANIMATIONS \\
+  //var curAnim;
+
+  var animationsToDraw = data.rooms[currentRoom].AnimationsToDraw;
+  var curAnim;
+ 
+  // Iterate through each animation stored.
+  for (var anim = 0; anim < animationsToDraw.length; anim++){
+    curAnim = animationsToDraw[anim];
+
+    if (AnimTimers[anim] == null){ // The animation has not been set up.
+      var animTimer = {
+        frame : 0, // The index to reference the correct animation frame.
+        timeOfLastFrame : 0
+      }
+      
+      AnimTimers.push(animTimer); // Set it up.
+    }
+
+    // Play the correct frame. 
+    // The current animation is curAnim
+    // The current frame is AnimTimers[anim].frame
+    // So check if we are still on the same frame.
+    // each frame has a duration, check if the last
+    var curFrame = curAnim.Frames[AnimTimers[anim].frame];
+    var timeNeeded4NextFrame = AnimTimers[anim].timeOfLastFrame + curFrame.Duration;
+
+    UpdateText(3,timeNeeded4NextFrame);
+    if ( tickClock >= timeNeeded4NextFrame){ // Switch to next frame.
+
+      // Check if last frame. ADD THIS
+      
+      if ( AnimTimers[anim].frame + 1 >= curAnim.Frames.length){
+        AnimTimers[anim].frame = 0;
+        AnimTimers[anim].timeOfLastFrame = tickClock;
+      }
+
+
+      AnimTimers[anim].frame++; // Iterate frame 
+      AnimTimers[anim].timeOfLastFrame = tickClock; // update time of last frame.
+      curFrame = curAnim.Frames[AnimTimers[anim].frame];
+    }
+
+    // Now that the correct frame is selected. 
+    // Display the appropriate frame in the correct pos
+  
+    image(Images[curFrame.imgNum] , curFrame.x  , curFrame.y );
+  }
+} 
+
+
+
 
 function SwitchLevel(roomNum, x = 0, y = 0){
   currentRoom = roomNum; // Changes the room that is being displayed.
@@ -180,6 +257,10 @@ function SwitchLevel(roomNum, x = 0, y = 0){
     CurrentPlayerPos.y = data.rooms[roomNum].spawnLocationY;
   }
   else{ CurrentPlayerPos.x = x; CurrentPlayerPos.y = y;}
+
+  // Setup Animation handles
+  AnimTimers = [];
+
 }
 
 function IsColliding(PosX, PosY, Offsets)
@@ -335,6 +416,33 @@ function DrawUI(){
     text("Study", width/2 + 120, 15);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// AHHH CLOUDS
+
+function CloudGameDisplay(){
+
+  background(131, 169,255);
+  noStroke();  textSize(20); textAlign(CENTER);
+  fill(0);  rect(width / 2 - 600  , 0, 1200,  100); 
+  image(Images[14] , 600 , 350); 
+
+}
 
 
 

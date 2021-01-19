@@ -7,8 +7,20 @@
         "spawnLocationY" : 350,
 
         "ObjectsToDraw":[
-            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 2 }        
+            {"Name" :"Room" ,"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 2 }
+           
         ],
+
+        "AnimationsToDraw":[
+            {"Name" :"Animation Test",
+                "Frames": [
+                    {"x":482,"y":195,"imgNum" : 15,  "Duration" : 0.25 },
+                    {"x":482,"y":195,"imgNum" : 16,  "Duration" : 0.25  },
+                    {"x":482,"y":195,"imgNum" : 17,  "Duration" : 0.25  },
+                    {"x":482,"y":195,"imgNum" : 18,  "Duration" : 0.25  }
+                ] }  
+        ],
+        
 
         "Colliders":[
             {"NameOfCollider" : "Doorway", "Type" : 1, "Room" : 1, "SpwnX" : 80, "SpwnY" : 350, "X1" : 856,"Y1": 324, "X2" : 874,"Y2" : 376},
@@ -35,7 +47,7 @@
         "spawnLocationY" : 350,
 
         "ObjectsToDraw":[
-            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 3 }
+            {"Name" :"Room" , "Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 3 }
     
         
         ],
@@ -64,7 +76,7 @@
         "spawnLocationY" : 350,
 
         "ObjectsToDraw":[
-            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 4 },
+            {"Name" :"Room" , "Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 4 },
             {"Type" : 0, "Colour" : 0, "x" : 321 , "y" : 409 ,"width" : 227 , "height" : 124},
             {"Type" : 0, "Colour" : 0, "x" : 321 , "y" : 173 ,"width" : 76 , "height"  : 236},
             {"Type" : 0, "Colour" : 0, "x" : 397 , "y" : 173 ,"width" : 171, "height"  : 76}
@@ -194,7 +206,16 @@
       {"Index" : 11, "url" : "Sprites/Characters/Char_Tod.png"},
 
       {"Index" : 12, "url" : "Sprites/Props/UI_Bar.png"},
-      {"Index" : 13, "url" : "Sprites/Props/UI_Sanity.png"}
+      {"Index" : 13, "url" : "Sprites/Props/UI_Sanity.png"},
+      {"Index" : 14, "url" : "Sprites/BLobLand/Room_BlobLand.png"},
+
+      {"Index" : 15, "url" : "Sprites/Props/Animations/PcAnim/Pc_KF1.png"},
+      {"Index" : 16, "url" : "Sprites/Props/Animations/PcAnim/Pc_KF2.png"},
+      {"Index" : 17, "url" : "Sprites/Props/Animations/PcAnim/Pc_KF3.png"},
+      {"Index" : 18, "url" : "Sprites/Props/Animations/PcAnim/Pc_KF4.png"},
+      {"Index" : 19, "url" : "Sprites/Props/Animations/PcAnim/Pc_KF5.png"}
+
+
 
   ]
 }
