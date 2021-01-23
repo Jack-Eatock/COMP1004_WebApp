@@ -55,13 +55,21 @@ var GameBeingPlayed = 0;
 // Animating
 var curFrame = 0; // iterates every frame, updates tickClock every 60. (a second)
 var tickClock = 0; // will keep track of seconds, reset every minute. ( 60 secs)
+var curHour = 0;
 
-//var clockIncFrames = 60; // Num frames passed to increment clock.  60 is a second
-var clockMax = 6; // How many seconds pass before resting clock
+// Bedroom Vars
+var isPlantAlive = true;
+
+// Showing SIngle Image On screen. E.g notes / text
+var imageToShow = 0;
+var isOnlyImageShowing = false;
+
+
 
 function preload() {
   data = loadJSON('Maps.json');  // loads required data
 }
+
 
 function SetupImages(){
   var imagesToLoad = data.ImagesToPreload;
@@ -70,6 +78,8 @@ function SetupImages(){
     Images.push(newImage);
   }
 }
+
+
 
 function setup() {
   SetupImages()     // prepares all images
@@ -80,8 +90,8 @@ function setup() {
   var cnv = createCanvas(1200, 700);
   cnv.parent("MyCanvas"); // Centred by CSS
 
-  //let Col = data.rooms[0].name;
 }
+
 
 function draw() {
   // Set background to black.
@@ -91,6 +101,15 @@ function draw() {
   CheatTeleportToRoom(true);
   // Debug Tools \\
   
+  // If only displaying image. Display the image and break out.
+  if (isOnlyImageShowing){
+    DisplayOnlyImageUntillInput();
+    GetInput();
+    if (!modeDebug){DrawUI();}
+    return;
+  }
+  
+  // Not sure to keep this atm
   switch (GameBeingPlayed){
     case (0) : 
       DrawRoom();
@@ -107,23 +126,15 @@ function draw() {
   if (!modeDebug){DrawUI();}
 
   // Notifications
-  //UpdateText(3, 'Notice : ' + PlayerNotice);
-//  UpdateText(3, tickClock);
-
-
-
-
-  curFrame++;
-  tickClock = curFrame / 60;
-
-  // Calculating when a second has passed ( every 60 frames.)
-  //if (curFrame++ > clockIncFrames) {
-   // curFrame = 0; // if a second has passed increment tickClock, but check it is not over 60 seconds.
-   // if (tickClock++ >= clockMax){tickClock = 0;}} 
-   // tickClock++;
-
+  UpdateText(3, 'Notice : ' + PlayerNotice);
   
+  // Time stuff
+  curFrame++; // Keep track of frame
+  tickClock = curFrame / 60; // Convert current frame into Secodns.
+  curHour   = (tickClock / 7.5).toFixed(2); // 8 hours per minute
+
 }
+
 
 function PlayerTriedToInteract(){
 
@@ -132,24 +143,37 @@ function PlayerTriedToInteract(){
     case (0):  break; // Nothin interactable.
     case (1):  StudyPercent.percent  += 10; break; // Nothin interactable.
     case (2):  EnergyPercent.percent += 10; break; // Nothin interactable.
+    case (3):  isOnlyImageShowing = true; break; // Nothin interactable.
+    case (4):  isPlantAlive = false; Images[23] = Images[24]; break; // Make plant dead.
   
     default:
       break;
   }
 
 }
+
+function DisplayOnlyImageUntillInput(){
+  image(Images[26] , width/2  , 300 );
+}
+
+
 
 function PlayerCouldInteract(event){
   var startText = "Press SPACE to INTERACT with : ";
   switch (event) {
     case (0):  break; // Nothin interactable.
-    case (1): PlayerNotice = startText + "Computer!"; break; // Pc
-    case (2): PlayerNotice = startText + "Bed!"; break; // Pc
-  
+    case (1): image(Images[20] , 476  , 200 );  PlayerNotice = startText + "Computer!"; break; // Pc
+    case (2): image(Images[22] ,  453 ,  466 ); PlayerNotice = startText + "Bed!"; break; // Bed
+    case (3): image(Images[21] , 366.5  , 292 ); PlayerNotice = startText + "Notes!"; break; // Notes
+    case (4): if (isPlantAlive == true){ image(Images[25] , 599  ,176 );}  PlayerNotice = startText + "Plant!"; break;
+      break; // Nothin interactable.
+    
     default:
       break;
   }
 }
+
+
 
 // Debug function \\
 function CheatTeleportToRoom(active)
@@ -163,6 +187,7 @@ function CheatTeleportToRoom(active)
   if (keyIsDown(54)) {currentRoom = 6; } 
   if (keyIsDown(55)) {currentRoom = 0; } 
 }
+
 
 // Runs every frame.
 function DrawRoom(){
@@ -195,11 +220,19 @@ function DrawRoom(){
     }
   }
 
-  // DISPLAY ANIMATIONS \\
-  //var curAnim;
+  // Not all objects are static. Some are animated. Display them \\
+  DisplayAnimations();
+} 
 
+
+
+
+function DisplayAnimations(){
+
+  // DISPLAY ANIMATIONS \\
   var animationsToDraw = data.rooms[currentRoom].AnimationsToDraw;
-  var curAnim;
+  var curAnim; var timeNeeded4NextFrame;  var curFrame;
+
  
   // Iterate through each animation stored.
   for (var anim = 0; anim < animationsToDraw.length; anim++){
@@ -214,28 +247,29 @@ function DrawRoom(){
       AnimTimers.push(animTimer); // Set it up.
     }
 
-    // Play the correct frame. 
-    // The current animation is curAnim
-    // The current frame is AnimTimers[anim].frame
-    // So check if we are still on the same frame.
-    // each frame has a duration, check if the last
-    var curFrame = curAnim.Frames[AnimTimers[anim].frame];
-    var timeNeeded4NextFrame = AnimTimers[anim].timeOfLastFrame + curFrame.Duration;
+    /**
+     * Play the correct frame. 
+     * The current animation is curAnim
+     * The current frame is AnimTimers[anim].frame
+     * So check if we are still on the same frame.
+     * each frame has a duration, check if the last
+     */
 
-    UpdateText(3,timeNeeded4NextFrame);
+
+    curFrame = curAnim.Frames[AnimTimers[anim].frame];
+    timeNeeded4NextFrame = AnimTimers[anim].timeOfLastFrame + curFrame.Duration;
+
     if ( tickClock >= timeNeeded4NextFrame){ // Switch to next frame.
-
       // Check if last frame. ADD THIS
-      
       if ( AnimTimers[anim].frame + 1 >= curAnim.Frames.length){
         AnimTimers[anim].frame = 0;
         AnimTimers[anim].timeOfLastFrame = tickClock;
       }
-
-
-      AnimTimers[anim].frame++; // Iterate frame 
-      AnimTimers[anim].timeOfLastFrame = tickClock; // update time of last frame.
-      curFrame = curAnim.Frames[AnimTimers[anim].frame];
+      else{
+        AnimTimers[anim].frame++; // Iterate frame 
+        AnimTimers[anim].timeOfLastFrame = tickClock; // update time of last frame.
+        curFrame = curAnim.Frames[AnimTimers[anim].frame];
+      }
     }
 
     // Now that the correct frame is selected. 
@@ -243,7 +277,7 @@ function DrawRoom(){
   
     image(Images[curFrame.imgNum] , curFrame.x  , curFrame.y );
   }
-} 
+}
 
 
 
@@ -263,6 +297,9 @@ function SwitchLevel(roomNum, x = 0, y = 0){
 
 }
 
+
+
+
 function IsColliding(PosX, PosY, Offsets)
 {
   let CordsToCheck =
@@ -279,6 +316,7 @@ function IsColliding(PosX, PosY, Offsets)
  var Cols =  data.rooms[currentRoom].Colliders;  // Grab the colliders for this room. Optimsie later!
  var Colliding = false;     
  var eventTrigFlag = false; // Ensures a new event trig is found. Or set default.
+ var eventToStart =  0;
 
  for (var i = 0; i < Cols.length; i++) { // Check all the colliders within the room.
   for (var j = 0; j < CordsToCheck.length; j++){
@@ -294,14 +332,18 @@ function IsColliding(PosX, PosY, Offsets)
           switch (Cols[i].Type){
             case 0: Colliding = true; break; // basic
             case 1: SwitchLevel(Cols[i].Room, Cols[i].SpwnX, Cols[i].SpwnY); break; // doors
-            case 2: PlayerCouldInteract(Cols[i].Event); eventTrigFlag = true; curTrigEvent = Cols[i].Event;  // Trigger
+            case 2: eventToStart = Cols[i].Event; eventTrigFlag = true;  // Trigger
           }
       }
     }
   }
-  // If no trig event found reset
-  if (!eventTrigFlag){curTrigEvent = 0; PlayerNotice = "null";}
  }
+   // If no trig event found reset
+   if (!eventTrigFlag){curTrigEvent = 0; PlayerNotice = "null";}
+   else{ // There was an event found, Make sure only one is set.
+     curTrigEvent = eventToStart;
+     PlayerCouldInteract(eventToStart);
+   }
 
  // Make sure the player does not go out side the canvas border.
  for (var j = 0; j < CordsToCheck.length; j++){
@@ -309,9 +351,11 @@ function IsColliding(PosX, PosY, Offsets)
   PointY = CordsToCheck[j].Y;
   if (PointX >=  width || PointX <= 0 || PointY <= 0 || PointY >= height) {Colliding = true;}
  }
-
- return Colliding;
+  return Colliding;
 }
+
+
+
 
 function MoveCharacter()
 {
@@ -343,7 +387,16 @@ function MoveCharacter()
 }
 
 
+
+
+
 function GetInput() {
+
+  // No input should work, other than space to close the image
+  if (isOnlyImageShowing){
+    if (keyIsDown(69)){ isOnlyImageShowing = false;}
+    return;
+  }
 
   // Keycode 65 = a   Keycode 87 = s
   if (keyIsDown(65) && keyIsDown(68))  {  playerMovement.x =  0; }
@@ -367,6 +420,9 @@ function GetInput() {
 } 
 
 
+
+
+
 function UpdateText(ref, newText){
   // Default vals
   noStroke(0); fill(255); textSize(20); textAlign(LEFT);
@@ -375,11 +431,13 @@ function UpdateText(ref, newText){
     case (0): { text(newText, 800, 25); break;}
     case (1): { text(newText, 500, 25); break;}
     case (2): { text(newText, 200, 25); break;}
-    case (3): {textAlign(CENTER); text(newText, width/2, 90); break;}
+    case (3): {textAlign(CENTER); text(newText, width/2, 640); break;}
   }
 
 
 }
+
+
 
 
 function DrawUI(){
@@ -414,14 +472,22 @@ function DrawUI(){
     text("Hunger", width/2, 15);
     text("Energy", width/2 - 120, 15);
     text("Study", width/2 + 120, 15);
+
+   // text("Sanity", width/2 + 200, 51);
+    //text("Sanity", width/2 - 200, 51);
+    textSize(18);
+    text("- - - - ]|I{•------» ⓢΔ几𝕚Ⓣｙ «------•}I|[ - - - -", width/2 , 75);
+
+    var hour = Math.floor(curHour);
+    var minute = Math.floor((curHour - hour) * 60);
+    textAlign(LEFT);
+    text("Time [ " + hour + " : " + minute + " ]",      98 , 578);
+    text("[02/03/2020] ", 100 , 600);
+
+    //textSize(12);
+   //text("Sanity", width/2 - 130 , 50);
+    
 }
-
-
-
-
-
-
-
 
 
 

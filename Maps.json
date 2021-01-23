@@ -7,7 +7,8 @@
         "spawnLocationY" : 350,
 
         "ObjectsToDraw":[
-            {"Name" :"Room" ,"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 2 }
+            {"Name" :"Room"  , "Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 2 },
+            {"Name" :"Plant" , "Type" : 1, "x" : 604.5 ,"y" : 200.5, "imgNum" : 23 }
            
         ],
 
@@ -34,8 +35,10 @@
             {"NameOfCollider" : "Desk1", "Type" : 0,"X1" : 321,"Y1": 173, "X2" : 397,"Y2" : 409},
             {"NameOfCollider" : "Desk1", "Type" : 0, "X1" : 397,"Y1": 173, "X2" : 568,"Y2" : 249},
 
-            {"NameOfCollider" : "Desk1", "Type" : 2, "Event" : 1 ,"X1" : 410,"Y1": 201, "X2" : 557,"Y2" : 303},
-            {"NameOfCollider" : "Desk1", "Type" : 2, "Event" : 2 ,"X1" : 400,"Y1": 393, "X2" : 615,"Y2" : 533}
+            {"NameOfCollider" : "Interact - Pc",    "Type" : 2, "Event" : 1 ,"X1" : 440,"Y1": 182, "X2" : 563,"Y2" : 280},
+            {"NameOfCollider" : "Interact - Bed",   "Type" : 2, "Event" : 2 ,"X1" : 400,"Y1": 393, "X2" : 615,"Y2" : 533},
+            {"NameOfCollider" : "Interact - Notes", "Type" : 2, "Event" : 3 ,"X1" : 363,"Y1": 270, "X2" : 425,"Y2" : 344},
+            {"NameOfCollider" : "Interact - Plant", "Type" : 2, "Event" : 4 ,"X1" : 570,"Y1": 175, "X2" : 649,"Y2" : 253}
 
         ]
 
@@ -50,6 +53,10 @@
             {"Name" :"Room" , "Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 3 }
     
         
+        ],
+        
+        "AnimationsToDraw":[
+           
         ],
 
         "Colliders":[
@@ -82,6 +89,10 @@
             {"Type" : 0, "Colour" : 0, "x" : 397 , "y" : 173 ,"width" : 171, "height"  : 76}
         ],
 
+        "AnimationsToDraw":[
+           
+        ],
+
         "Colliders":[
             {"NameOfCollider" : "Doorway", "Type" : 1, "Room" : 1, "SpwnX" : 360, "SpwnY" : 175, "X1" : 686,"Y1": 530, "X2" : 790,"Y2" : 548},
             {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 321, "Y2" : 700},
@@ -108,6 +119,16 @@
             {"Type" : 1, "x" : 700 ,"y" : 400, "imgNum" : 10 }
         ],
 
+        "AnimationsToDraw":[
+            {"Name" :"Animation Test",
+                "Frames": [
+                    {"x":700,"y":200,"imgNum" : 15,  "Duration" : 0.25 },
+                    {"x":700,"y":200,"imgNum" : 16,  "Duration" : 0.25  },
+                    {"x":700,"y":200,"imgNum" : 17,  "Duration" : 0.25  },
+                    {"x":700,"y":200,"imgNum" : 18,  "Duration" : 0.25  }
+                ] }  
+        ],
+
         "Colliders":[
             {"NameOfCollider" : "Doorway", "Type" : 1, "Room" : 1, "SpwnX" : 360, "SpwnY" : 450, "X1" : 403,"Y1": 158, "X2" : 507,"Y2" : 176},
 
@@ -129,6 +150,10 @@
         "ObjectsToDraw":[
             {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 6 }
  
+        ],
+
+        "AnimationsToDraw":[
+           
         ],
 
         "Colliders":[
@@ -153,6 +178,10 @@
  
         ],
 
+        "AnimationsToDraw":[
+           
+        ],
+
         "Colliders":[
          
             {"NameOfCollider" : "Doorway",   "Type" : 1, "Room" : 1, "SpwnX" : 837, "SpwnY" : 450, "X1" : 342,"Y1": 178, "X2" : 446,"Y2" : 196},
@@ -173,6 +202,10 @@
         "ObjectsToDraw":[
             {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 8 },
             {"Type" : 1, "x" : 400 ,"y" : 250, "imgNum" : 9 }
+        ],
+
+        "AnimationsToDraw":[
+           
         ],
 
         "Colliders":[
@@ -213,7 +246,18 @@
       {"Index" : 16, "url" : "Sprites/Props/Animations/PcAnim/Pc_KF2.png"},
       {"Index" : 17, "url" : "Sprites/Props/Animations/PcAnim/Pc_KF3.png"},
       {"Index" : 18, "url" : "Sprites/Props/Animations/PcAnim/Pc_KF4.png"},
-      {"Index" : 19, "url" : "Sprites/Props/Animations/PcAnim/Pc_KF5.png"}
+      {"Index" : 19, "url" : "Sprites/Props/Animations/PcAnim/Pc_KF5.png"},
+
+
+      {"Index" : 20, "url" : "Sprites/Props/Pc_Interact_Outline.png"},
+      {"Index" : 21, "url" : "Sprites/Props/Notes_Outline.png"},
+      {"Index" : 22, "url" : "Sprites/Props/Bed_Outline.png"},
+
+      {"Index" : 23, "url" : "Sprites/Bedroom/Plant1.png"},
+      {"Index" : 24, "url" : "Sprites/Bedroom/PlantDead.png"},
+      {"Index" : 25, "url" : "Sprites/Bedroom/Plant_Outline.png"},
+
+      {"Index" : 26, "url" : "Sprites/Notes.png"}
 
 
 
