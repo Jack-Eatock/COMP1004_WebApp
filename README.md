@@ -3,7 +3,7 @@
 
 ## Progress
 ### 
-![GitHub Logo](https://i.gyazo.com/57146443213b35b713051132df67b070.mp4)
+![GitHub Logo](https://i.gyazo.com/79a139607770794a6b18a1960b4b5c57.png)
 
 ## Requirements:
 ### I was asked to develop a single web page application with a two dimensional game built in. Using:
