@@ -1,5 +1,5 @@
 # COMP1004_WebApp
-## This project is being developed for my first year studying Computer Science at Plymouth University.
+ This project is being developed for my first year studying Computer Science at Plymouth University.
 
 ## Progress
 ####
