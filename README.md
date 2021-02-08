@@ -1,19 +1,18 @@
 # COMP1004_WebApp
-##
-This project is being developed for my first year studying Computer Science at Plymouth University.
+##This project is being developed for my first year studying Computer Science at Plymouth University.
 
-### Progress
-#### 
+## Progress
+####
 ![GitHub Logo](https://i.gyazo.com/79a139607770794a6b18a1960b4b5c57.png)
 
-### Requirements:
-#### I was asked to develop a single web page application with a two dimensional game built in. Using:
+## Requirements:
+### I was asked to develop a single web page application with a two dimensional game built in. Using:
   * CSS
   * HTML
   * JavaScript ( I decided to also use the P5 library )
- 
-### What I decided to make: 
-#### My current plan for my project is to design a simple but intuitive lockdown simulator, in
+
+## What I decided to make: 
+### My current plan for my project is to design a simple but intuitive lockdown simulator, in
 which you must balance work, sleep, hunger and thirst while also completing puzzles to
 unravel an interesting story.
 I plan to target this game mostly towards university students that have spent a considerable
