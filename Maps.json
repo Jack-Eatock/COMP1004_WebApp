@@ -116,7 +116,7 @@
 
         "ObjectsToDraw":[
             {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 5 },
-            {"Type" : 1, "x" : 700 ,"y" : 400, "imgNum" : 10 }
+            {"Type" : 1, "x" : 700 ,"y" : 350, "imgNum" : 10 }
         ],
 
         "AnimationsToDraw":[
@@ -136,7 +136,6 @@
             {"NameOfCollider" : "Wall Top",   "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 1200,"Y2" : 173},
             {"NameOfCollider" : "Wall Right", "Type" : 0, "X1" : 859,"Y1": 0, "X2" : 1200,"Y2" : 700},
             {"NameOfCollider" : "Wall Bot"  , "Type" : 0, "X1" : 0,"Y1": 533, "X2" : 1200,"Y2" : 700}
-           
         ]
 
     },
@@ -257,7 +256,8 @@
       {"Index" : 24, "url" : "Sprites/Bedroom/PlantDead.png"},
       {"Index" : 25, "url" : "Sprites/Bedroom/Plant_Outline.png"},
 
-      {"Index" : 26, "url" : "Sprites/Notes.png"}
+      {"Index" : 26, "url" : "Sprites/Notes.png"},
+      {"Index" : 27, "url" : "Sprites/Characters/Outlines/Char_Sam_Outline.png"}
 
 
 
