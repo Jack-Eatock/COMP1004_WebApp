@@ -115,8 +115,9 @@
         "spawnLocationY" : 350,
 
         "ObjectsToDraw":[
-            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 5 },
+            {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 5  },
             {"Type" : 1, "x" : 700 ,"y" : 350, "imgNum" : 10 }
+ 
         ],
 
         "AnimationsToDraw":[
@@ -135,7 +136,9 @@
             {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 321, "Y2" : 700},
             {"NameOfCollider" : "Wall Top",   "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 1200,"Y2" : 173},
             {"NameOfCollider" : "Wall Right", "Type" : 0, "X1" : 859,"Y1": 0, "X2" : 1200,"Y2" : 700},
-            {"NameOfCollider" : "Wall Bot"  , "Type" : 0, "X1" : 0,"Y1": 533, "X2" : 1200,"Y2" : 700}
+            {"NameOfCollider" : "Wall Bot"  , "Type" : 0, "X1" : 0,"Y1": 533, "X2" : 1200,"Y2" : 700},
+
+            {"NameOfCollider" : "Interact - Sam", "Type" : 2, "Event" : 5 ,"X1" : 650,"Y1": 300, "X2" : 730,"Y2" : 400}
         ]
 
     },

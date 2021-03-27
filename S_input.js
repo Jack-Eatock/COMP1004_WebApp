@@ -4,8 +4,8 @@
 function GetInput() {
 
     // No input should work, other than space to close the image
-    if (IsOnlyImageShowing){
-      if (keyIsDown(69)){ IsOnlyImageShowing = false;}
+    if (IsInteracting){
+      if (keyIsDown(69)){ IsInteracting = false;}
       return;
     }
   

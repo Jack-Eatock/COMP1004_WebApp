@@ -102,7 +102,7 @@ function DrawRoom(){
   }
   
   
-  // AHHH CLOUDS
+// AHHH CLOUDS
 
 function CloudGameDisplay(){
 

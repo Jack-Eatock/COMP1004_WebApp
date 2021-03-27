@@ -18,14 +18,14 @@ var IsPlantAlive = true;
 
 ///////// Showing Single Image On screen. E.g notes / text \\\\\\\\\
 var ImageToShow = 0;
-var IsOnlyImageShowing = false;
-
+var IsInteracting = false;
 
 /** 
  * Preload all the data into a easily accessed variable.
  */
 function preload() {
   data = loadJSON('Maps.json');  // loads required data
+  dialog = loadJSON('Dialog.json');  // loads required data
 }
 
 /** 
@@ -71,10 +71,15 @@ function draw() {
   // Debug Tools \\
   CheatTeleportToRoom(true);
   // Debug Tools \\
+
+  // Time stuff
+  CurFrame++; // Keep track of frame
+  TickClock = CurFrame / 60; // Convert current frame into Secodns.
+  CurHour   = (TickClock / 7.5).toFixed(2); // 8 hours per minute
   
   // If only displaying image. Display the image and break out.
-  if (IsOnlyImageShowing){
-    DisplayOnlyImageUntillInput();
+  if (IsInteracting){
+    DisplayOnlyImageUntillInput(CurTrigEvent);
     GetInput();
     if (!ModeDebug){DrawUI();}
     return;
@@ -99,10 +104,8 @@ function draw() {
   // Notifications
   UpdateText(3, 'Notice : ' + PlayerNotice);
   
-  // Time stuff
-  CurFrame++; // Keep track of frame
-  TickClock = CurFrame / 60; // Convert current frame into Secodns.
-  CurHour   = (TickClock / 7.5).toFixed(2); // 8 hours per minute
+
+  
 
 }
 
@@ -112,8 +115,18 @@ function draw() {
  * without displaying the room etc. For example displaying the notes.
  * - Maybe make it so you can inspect objects? 
  */
-function DisplayOnlyImageUntillInput(){
-  image(Images[26] , width/2  , 300 );
+function DisplayOnlyImageUntillInput(type){
+  switch (type){
+    case 3 : image(Images[26] , width/2  , 300 ); break;
+    case 5 :
+      fill(255); rect(600 - 410, 190,820,320); // White background
+      fill(0);   rect(600 - 400, 200,800,300); // Black overlay
+      image( Images[0] , 250  , 270 ); 
+      image( Images[10] , 940  , 430 ); 
+      Communication();
+        break;
+  }
+  
 }
 
 

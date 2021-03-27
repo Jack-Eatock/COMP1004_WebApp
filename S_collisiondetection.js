@@ -8,7 +8,6 @@ var playerColiderOffsets =
 }
 
 
-
 /** 
  * Checks if the player is colliding with any colliders / triggers
  * - Takes the current position, calculates the 4 points for the player colider
@@ -55,7 +54,7 @@ function IsColliding(PosX, PosY, Offsets)
   }
  }
    // If no trig event found reset
-   if (!eventTrigFlag){CurTrigEvent = 0; PlayerNotice = "null";}
+   if (!eventTrigFlag){CurTrigEvent = 0; PlayerNotice = "You're exploring";}
    else{ // There was an event found, Make sure only one is set.
      CurTrigEvent = eventToStart;
      PlayerCouldInteract(eventToStart);
