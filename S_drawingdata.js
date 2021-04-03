@@ -81,15 +81,15 @@ function DrawRoom(){
       curFrame = curAnim.Frames[AnimTimers[anim].frame];
       timeNeeded4NextFrame = AnimTimers[anim].timeOfLastFrame + curFrame.Duration;
   
-      if ( RealTimeSeconds >= timeNeeded4NextFrame){ // Switch to next frame.
+      if ( TickClock >= timeNeeded4NextFrame){ // Switch to next frame.
         // Check if last frame. ADD THIS
         if ( AnimTimers[anim].frame + 1 >= curAnim.Frames.length){
           AnimTimers[anim].frame = 0;
-          AnimTimers[anim].timeOfLastFrame = RealTimeSeconds;
+          AnimTimers[anim].timeOfLastFrame = TickClock;
         }
         else{
           AnimTimers[anim].frame++; // Iterate frame 
-          AnimTimers[anim].timeOfLastFrame = RealTimeSeconds; // update time of last frame.
+          AnimTimers[anim].timeOfLastFrame = TickClock; // update time of last frame.
           curFrame = curAnim.Frames[AnimTimers[anim].frame];
         }
       }

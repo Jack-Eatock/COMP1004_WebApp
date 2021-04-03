@@ -1,7 +1,6 @@
 ///////// UI \\\\\\\\\
 var PlayerNotice = "Welcome to isolation!";
 
-
 // Defines the functionality of a percent obj
 class Percent{
   constructor(){this._percent = 100;}
@@ -50,24 +49,16 @@ function DrawUI(){
     text("Energy", width/2 - 120, 15);
     text("Study", width/2 + 120, 15);
 
-    //text("Sanity", width/2 + 200, 51);
+   // text("Sanity", width/2 + 200, 51);
     //text("Sanity", width/2 - 200, 51);
     textSize(18);
     text("- - - - ]|I{•------» ⓢΔ几𝕚Ⓣｙ «------•}I|[ - - - -", width/2 , 75);
 
-    // Time is precalculated in time script soo no worries ;) 
+    var hour = Math.floor(CurHour);
+    var minute = Math.floor((CurHour - hour) * 60);
     textAlign(LEFT);
-
-    //text("CurFrame: " + CurFrame + " RealtimeSecs: " +  RealTimeSeconds + "\n RealtimeSecsRounded: " +  RealTimeSecRounded + " Scaled Secs: " + ScaledSeconds,      98 , 578);
-    text("[" + ScaledHourToDisplay + " : " + ScaledMinToDisplay + "]",      100 , 640);
-    text(" [" + ScaledDayToDisplay  + "/03/2020]  " , 1000 , 640 );
-
-    /*
-    textAlign(LEFT);
-    text("Time [ " + ScaledHours + " : " + ScaledMinutes + " ]",      98 , 578);
-    text("[" + ScaledDay  + "/03/2020] ", 100 , 600);
-  */
-
+    text("Time [ " + hour + " : " + minute + " ]",      98 , 578);
+    text("[02/03/2020] ", 100 , 600);
 
     //textSize(12);
    //text("Sanity", width/2 - 130 , 50);

@@ -8,6 +8,11 @@ var GameBeingPlayed = 0;
 var Images = []
 var CurrentRoom = 0;
 
+// Time
+var CurFrame = 0; // iterates every frame, updates tickClock every 60. (a second)
+var TickClock = 0; // will keep track of seconds, reset every minute. ( 60 secs)
+var CurHour = 0;
+
 ///////// Bedroom Vars \\\\\\\\\
 var IsPlantAlive = true;
 
@@ -60,14 +65,18 @@ function setup() {
  * Basically runs everything.
  */
 function draw() {
-  background(0);   // Set background to black.
+  // Set background to black.
+  background(0);
 
   // Debug Tools \\
   CheatTeleportToRoom(true);
   // Debug Tools \\
 
-  updateTime();   // Time
-
+  // Time stuff
+  CurFrame++; // Keep track of frame
+  TickClock = CurFrame / 60; // Convert current frame into Secodns.
+  CurHour   = (TickClock / 7.5).toFixed(2); // 8 hours per minute
+  
   // If only displaying image. Display the image and break out.
   if (IsInteracting){
     DisplayOnlyImageUntillInput(CurTrigEvent);
@@ -94,6 +103,10 @@ function draw() {
 
   // Notifications
   UpdateText(3, 'Notice : ' + PlayerNotice);
+  
+
+  
+
 }
 
 
