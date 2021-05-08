@@ -13,7 +13,7 @@ function PlayerTriedToInteract(){
     // Check which object is currently interactable.
     switch (CurTrigEvent) {
       case (0):  break; // Nothin interactable.
-      case (1):  StudyPercent.percent  += 10; break; // Nothin interactable.
+      case (1):  StudyPercent.percent  += 10;  break; // Nothin interactable.
       case (2):  EnergyPercent.percent += 10; break; // Nothin interactable.
       case (3):  IsInteracting = true; break; // Nothin interactable.
       case (4):  IsPlantAlive = false; Images[23] = Images[24]; break; // Make plant dead.

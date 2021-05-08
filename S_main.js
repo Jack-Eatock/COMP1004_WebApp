@@ -135,7 +135,6 @@ function SwitchLevel(roomNum, x = 0, y = 0){
 
   // Setup Animation handles
   AnimTimers = [];
-
 }
 
 

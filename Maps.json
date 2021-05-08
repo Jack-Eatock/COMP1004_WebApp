@@ -69,7 +69,7 @@
             {"NameOfCollider" : "Door-Main",   "Type" : 1, "Room" : 0,  "SpwnX" : 820, "SpwnY" : 350, "X1" : 15,"Y1": 298, "X2" : 33,"Y2" : 402},
             {"NameOfCollider" : "Door-Gary",   "Type" : 1, "Room" : 2,  "SpwnX" : 740, "SpwnY" : 465, "X1" : 311,"Y1": 158, "X2" : 415,"Y2" : 176},
             {"NameOfCollider" : "Door-Sam",    "Type" : 1, "Room" : 3,  "SpwnX" : 460, "SpwnY" : 200, "X1" : 311,"Y1": 538, "X2" : 415,"Y2" : 556},
-            {"NameOfCollider" : "Door-Kitchen","Type" : 1, "Room" : 4,  "SpwnX" : 75, "SpwnY" : 380, "X1" : 1167,"Y1": 298, "X2" : 1200,"Y2" : 402},
+            {"NameOfCollider" : "Door-Kitchen","Type" : 1, "Room" : 4,  "SpwnX" : 75, "SpwnY" : 350, "X1" : 1167,"Y1": 298, "X2" : 1200,"Y2" : 402},
             {"NameOfCollider" : "Door-Tod"  ,  "Type" : 1, "Room" : 5,  "SpwnX" : 393, "SpwnY" : 190, "X1" : 785,"Y1": 538, "X2" : 889,"Y2" : 556},
             {"NameOfCollider" : "Door-Alex" ,  "Type" : 1, "Room" : 6,  "SpwnX" : 772.5, "SpwnY" : 500, "X1" : 785,"Y1": 158, "X2" : 889,"Y2" : 176}
         
@@ -260,7 +260,16 @@
       {"Index" : 25, "url" : "Sprites/Bedroom/Plant_Outline.png"},
 
       {"Index" : 26, "url" : "Sprites/Notes.png"},
-      {"Index" : 27, "url" : "Sprites/Characters/Outlines/Char_Sam_Outline.png"}
+      {"Index" : 27, "url" : "Sprites/Characters/Outlines/Char_Sam_Outline.png"},
+
+      {"Index" : 28, "url" : "Sprites/UI/BurgerUI.png"},
+      {"Index" : 29, "url" : "Sprites/UI/BurgerUIOutline.png"},
+
+      {"Index" : 30, "url" : "Sprites/UI/LightBulbUI.png"},
+      {"Index" : 31, "url" : "Sprites/UI/LightBulbUIOutline.png"},
+
+      {"Index" : 32, "url" : "Sprites/UI/BookUI.png"},
+      {"Index" : 33, "url" : "Sprites/UI/BookUIOutline.png"}
 
 
 
