@@ -1,6 +1,6 @@
 ///////// Main GamePlay vars \\\\\\\\\
-var RateDecresePerFrameE = 0.017; var RateDecresePerFrameH = 0.018;
-var RateDecresePerFrameS = 0.026; var RateDecresePerFrameSY = 0.01;
+var RateDecresePerFrameE = 0.010; var RateDecresePerFrameH = 0.007;
+var RateDecresePerFrameS = 0.010; var RateDecresePerFrameSY = 0.01;
 var ModeDebug = false;
 var GameBeingPlayed = 0;
 

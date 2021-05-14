@@ -123,10 +123,10 @@
         "AnimationsToDraw":[
             {"Name" :"Animation Test",
                 "Frames": [
-                    {"x":700,"y":200,"imgNum" : 15,  "Duration" : 0.25 },
-                    {"x":700,"y":200,"imgNum" : 16,  "Duration" : 0.25  },
-                    {"x":700,"y":200,"imgNum" : 17,  "Duration" : 0.25  },
-                    {"x":700,"y":200,"imgNum" : 18,  "Duration" : 0.25  }
+                    {"x":720,"y":190,"imgNum" : 15,  "Duration" : 0.25 },
+                    {"x":720,"y":190,"imgNum" : 16,  "Duration" : 0.25  },
+                    {"x":720,"y":190,"imgNum" : 17,  "Duration" : 0.25  },
+                    {"x":720,"y":190,"imgNum" : 18,  "Duration" : 0.25  }
                 ] }  
         ],
 
@@ -161,7 +161,7 @@
         "Colliders":[
 
             {"NameOfCollider" : "Doorway"  ,  "Type" : 1, "Room" : 1,  "SpwnX" : 1130, "SpwnY" : 345, "X1" : 15,"Y1": 339, "X2" : 33,"Y2" : 443},
-            {"NameOfCollider" : "Wall Bot",   "Type" : 0, "X1" : 30 , "Y1" : 671, "X2" : 1170, "Y2" : 700},
+            {"NameOfCollider" : "Wall Bot",   "Type" : 0, "X1" : 0 , "Y1" : 598, "X2" : 1200, "Y2" : 700},
             {"NameOfCollider" : "Wall Top",   "Type" : 0, "X1" : 30 , "Y1" : 0, "X2" : 1170, "Y2" : 110},
             {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0 , "Y1" : 0, "X2" : 30, "Y2" : 700},
             {"NameOfCollider" : "Wall Right",  "Type" : 0, "X1" : 1170 , "Y1" : 0, "X2" : 1200, "Y2" : 700}
