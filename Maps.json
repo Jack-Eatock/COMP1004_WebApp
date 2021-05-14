@@ -164,7 +164,9 @@
             {"NameOfCollider" : "Wall Bot",   "Type" : 0, "X1" : 0 , "Y1" : 598, "X2" : 1200, "Y2" : 700},
             {"NameOfCollider" : "Wall Top",   "Type" : 0, "X1" : 30 , "Y1" : 0, "X2" : 1170, "Y2" : 110},
             {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0 , "Y1" : 0, "X2" : 30, "Y2" : 700},
-            {"NameOfCollider" : "Wall Right",  "Type" : 0, "X1" : 1170 , "Y1" : 0, "X2" : 1200, "Y2" : 700}
+            {"NameOfCollider" : "Wall Right",  "Type" : 0, "X1" : 1170 , "Y1" : 0, "X2" : 1200, "Y2" : 700},
+
+            {"NameOfCollider" : "Interact - Fridge", "Type" : 2, "Event" : 6 ,"X1" : 30,"Y1": 120, "X2" : 153,"Y2" : 240}
         ]
         
     },

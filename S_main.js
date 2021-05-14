@@ -2,11 +2,14 @@
 var RateDecresePerFrameE = 0.010; var RateDecresePerFrameH = 0.007;
 var RateDecresePerFrameS = 0.010; var RateDecresePerFrameSY = 0.01;
 var ModeDebug = false;
-var GameBeingPlayed = 0;
+var Cash = 5;
 
 ///////// Loading rooms \\\\\\\\\
 var Images = []
 var CurrentRoom = 0;
+
+///////// Cheats \\\\\\\\\
+var RateOfDecreaseMult = 4; // Multiplies decrease rate.
 
 ///////// Bedroom Vars \\\\\\\\\
 var IsPlantAlive = true;
@@ -68,27 +71,31 @@ function draw() {
 
   updateTime();   // Time
 
-  // If only displaying image. Display the image and break out.
+  // If Interacting with a specific object, run their code
   if (IsInteracting){
-    DisplayOnlyImageUntillInput(CurTrigEvent);
+    //DisplayOnlyImageUntillInput(CurTrigEvent);
     GetInput();
+    
+    // Run the appropriate Func, depending on interaction running.
+    switch (CurTrigEvent){
+      case(1):  PcInteraction();   break; // PC
+      case(2):  Sleeping();        break; // Bed
+      case(3):  NoteInteraction();   break;  // Notes
+      case(4):  PcInteraction();   break;  // Plant
+      case(5):  PcInteraction();   break; // Sam
+      case(6):  FridgeInteraction();   break; // Fridge
+      case(7):  FridgeInteraction();   break;
+    }
+
     if (!ModeDebug){DrawUI();}
+    // Don't wanna do anything else in this func 
     return;
   }
   
-  // Not sure to keep this atm
-  switch (GameBeingPlayed){
-    case (0) : 
-      DrawRoom();
-      GetInput();
-      MoveCharacter();
-      break;
-    
-    // Sleep Mini Game, Cloud Jumping. 
-    case (1) : 
-      CloudGameDisplay();
-      break;     
-  }
+ 
+  DrawRoom();
+  GetInput();
+  MoveCharacter();
 
   if (!ModeDebug){DrawUI();}
 
@@ -98,6 +105,9 @@ function draw() {
 
 
 /** 
+ * TO DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE
+ * 
+ * 
  * Used when you want only one image or set of images to display
  * without displaying the room etc. For example displaying the notes.
  * - Maybe make it so you can inspect objects? 
@@ -112,6 +122,7 @@ function DisplayOnlyImageUntillInput(type){
       image( Images[10] , 940  , 430 ); 
       Communication();
         break;
+
   }
   
 }

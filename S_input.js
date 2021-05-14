@@ -29,3 +29,5 @@ function GetInput() {
     if (keyIsDown(32)){ PlayerTriedToInteract();}
   
   } 
+
+  

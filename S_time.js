@@ -32,7 +32,7 @@ function updateTime(){
 
     if (ScaledMinutes > 60){ScaledMinutes = 0; ScaledHours++; }
         
-    if (ScaledHours >=  24)  { ScaledHours = 0;ScaledDay++;  }
+    if (ScaledHours >=  24)  { ScaledHours = ScaledHours - 24;ScaledDay++;  }
   
     if (ScaledHours < 10){ ScaledHourToDisplay = "0" + ScaledHours  }
     else{ScaledHourToDisplay = ScaledHours}

@@ -20,9 +20,9 @@ var EnergyPercent = new Percent; var SanityPercent = new Percent;
 function DrawUI(){
 
     // Apply the change per frame to each variable bar.
-    StudyPercent.percent -= RateDecresePerFrameS;
-    HungerPercent.percent -= RateDecresePerFrameH;
-    EnergyPercent.percent -= RateDecresePerFrameE;
+    StudyPercent.percent -= RateDecresePerFrameS * RateOfDecreaseMult;
+    HungerPercent.percent -= RateDecresePerFrameH * RateOfDecreaseMult;
+    EnergyPercent.percent -= RateDecresePerFrameE * RateOfDecreaseMult;
 
     // For each that has run out, start reducing sanity.
     if (StudyPercent.percent  == 0){ SanityPercent.percent -= RateDecresePerFrameSY}
@@ -75,7 +75,7 @@ function DrawUI(){
     text("Time", 1082, 94);
 
     // Add later
-    text("£15", 923, 55);
+    text("£" + Cash, 923, 55);
     textSize(23);text(ScaledDay, 1005, 66);textSize(20);
 
     //text("Sanity", width/2 + 200, 51);

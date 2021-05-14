@@ -1,7 +1,7 @@
 
 ///////// Triggers \\\\\\\\\
 var CurTrigEvent = 0;
-
+var BooleanDecisionRequired = false;
 
 /** 
  * - Should be run when the player presses the interact key
@@ -10,18 +10,23 @@ var CurTrigEvent = 0;
  */
 function PlayerTriedToInteract(){
 
+  
     // Check which object is currently interactable.
     switch (CurTrigEvent) {
       case (0):  break; // Nothin interactable.
-      case (1):  StudyPercent.percent  += 10;  break; // Nothin interactable.
-      case (2):  EnergyPercent.percent += 10; break; // Nothin interactable.
+      case (1):  IsInteracting = true; break; // PC interactable.
+      case (2):  IsInteracting = true; break; // Bed interactable.
       case (3):  IsInteracting = true; break; // Nothin interactable.
       case (4):  IsPlantAlive = false; Images[23] = Images[24]; break; // Make plant dead.
       case (5):  IsInteracting = true; CharacterInteraction(0); break; // Char interaction
-    
+      case (6):  IsInteracting = true; break; // Fridge Interaction
+
       default:
         break;
     }
+    
+
+ 
   
   }
   
@@ -31,6 +36,7 @@ function PlayerTriedToInteract(){
    * - Display yellow outline around object
    */
   function PlayerCouldInteract(event){
+    //noFill(); stroke(228,218,18); strokeWeight(4);
     var startText = "Press SPACE to INTERACT with : ";
     switch (event) {
       case (0):  break; // Nothin interactable.
@@ -39,7 +45,8 @@ function PlayerTriedToInteract(){
       case (3): image(Images[21] , 366.5  , 292 ); PlayerNotice = startText + "Notes!"; break; // Notes
       case (4): if (IsPlantAlive == true){ image(Images[25] , 599  ,176 );}  PlayerNotice = startText + "Plant!"; break;
       case (5): image(Images[27] , 702  , 353 ); PlayerNotice = startText + "Sam!";   break; // Char interaction
-      
+      case (6): rect(30,120,123,120); PlayerNotice = startText + "Fridge"; break; // Fridge Interaction
+
       default:
         break;
     }
@@ -52,5 +59,8 @@ function PlayerTriedToInteract(){
     switch(charNum){
       case 0: PlayerNotice =  "Interacting with Sam!";  break;
     }
+
+
     
   }
+
