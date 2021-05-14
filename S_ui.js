@@ -30,11 +30,11 @@ function DrawUI(){
     if (EnergyPercent.percent == 0){ SanityPercent.percent -= RateDecresePerFrameSY}
 
     // First draw the bars of colour depending on their values
-    noStroke();  textSize(20); textAlign(CENTER);
+    noStroke();  textSize(20); (CENTER);
     //fill(18,130,84);  rect(width / 2 + 70 , 22, StudyPercent.percent,  12);  // Study
     //fill(147,10,10);  rect(width / 2 - 50 , 22, HungerPercent.percent, 12);  // Hunger
     //fill(10,104,147); rect(width / 2 - 170, 22, EnergyPercent.percent, 12);  // Energy
-    fill(107,13,156); rect(width / 2 - 170, 40, (SanityPercent.percent / 100) * 340 , 12); // Sanity
+    fill(107,13,156); rect(width / 2 - 240, 30, (SanityPercent.percent / 100) * 480 , 40); // Sanity
 
     /// Now overlay the image of the outline over the top, this allows for 
     // interesting designs.
@@ -51,6 +51,10 @@ function DrawUI(){
     image(Images[30] , 175 , 46);  // Energy
     image(Images[32] , 250 , 46);  // Study
 
+    image(Images[34] , 925 , 46);  // PiggyBlank
+    image(Images[35] , 1005 , 46);  // Calander
+    image(Images[36] , 1082 , 46);  // Watch
+
     // Block out
     fill(0); stroke(0);  rect(70 , 18, 60 , (55/100) * (100 - HungerPercent.percent));  // Hunger
     fill(0); stroke(0);  rect(145 , 18, 60 , (55/100) * (100 - EnergyPercent.percent));  // Energy
@@ -66,19 +70,26 @@ function DrawUI(){
     text("Hunger", 100, 94);
     text("Energy", 175, 94);
     text("Study", 250, 94);
+    text("Cash", 925, 94);
+    text("Date", 1005, 94);
+    text("Time", 1082, 94);
+
+    // Add later
+    text("£15", 923, 55);
+    textSize(23);text(ScaledDay, 1005, 66);textSize(20);
 
     //text("Sanity", width/2 + 200, 51);
     //text("Sanity", width/2 - 200, 51);
     textSize(18);
-    text("- - - - ]|I{•------» ⓢΔ几𝕚Ⓣｙ «------•}I|[ - - - -", width/2 , 75);
+    text("- - - - ]|I{•------» ⓢΔ几𝕚Ⓣｙ «------•}I|[ - - - -", width/2 , 94);
 
     // Time is precalculated in time script soo no worries ;) 
     textAlign(LEFT);
 
     //text("CurFrame: " + CurFrame + " RealtimeSecs: " +  RealTimeSeconds + "\n RealtimeSecsRounded: " +  RealTimeSecRounded + " Scaled Secs: " + ScaledSeconds,      98 , 578);
-    text("[             ]",950,55);
-    text("" + ScaledHourToDisplay + " : " + ScaledMinToDisplay + "",      960 , 55);
-    text("[ " + ScaledDayToDisplay  + "/03/2020 ]" , 935 , 80 );
+    //text("[             ]",1100,55);
+    textSize(11); text("" + ScaledHourToDisplay + " : " + ScaledMinToDisplay + "",   1065 , 52); textSize(18);
+   // text("[ " + ScaledDayToDisplay  + "/03/2020 ]" , 1100 , 80 );
 
     /*
     textAlign(LEFT);
