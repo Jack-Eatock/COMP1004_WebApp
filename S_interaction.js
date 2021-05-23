@@ -23,11 +23,7 @@ function PlayerTriedToInteract(){
 
       default:
         break;
-    }
-    
-
- 
-  
+    } 
   }
   
   /** 

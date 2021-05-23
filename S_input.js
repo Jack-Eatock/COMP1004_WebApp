@@ -5,7 +5,7 @@ function GetInput() {
 
     // No input should work, other than space to close the image
     if (IsInteracting){
-      if (keyIsDown(69)){ IsInteracting = false;}
+      //if (keyIsDown(69)){ IsInteracting = false;}
       return;
     }
   

@@ -1,4 +1,7 @@
 function FridgeInteraction(){
+
+    if (keyIsDown(69)){ IsInteracting = false;}
+
     strokeWeight(6);  stroke(255); fill(0); rect(400, 190,400,320); strokeWeight(1);  
     noStroke(); fill(255); textSize(28); textAlign(CENTER);
     text("Fridge! \n Press Y to Eat", 600, 300);
@@ -8,5 +11,5 @@ function FridgeInteraction(){
 }
 
 function Eat(){
-    HungerPercent.percent += 5; IsInteracting = false; return;
+    HungerPercent.percent += 15; IsInteracting = false; return;
 }

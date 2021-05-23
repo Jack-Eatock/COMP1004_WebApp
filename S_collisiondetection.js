@@ -54,7 +54,7 @@ function IsColliding(PosX, PosY, Offsets)
   }
  }
    // If no trig event found reset
-   if (!eventTrigFlag){CurTrigEvent = 0; PlayerNotice = "You're exploring";}
+   if (!eventTrigFlag){CurTrigEvent = 0; PlayerNotice = "You're exploring " + WhichRoom(CurrentRoom);}
    else{ // There was an event found, Make sure only one is set.
      CurTrigEvent = eventToStart;
      PlayerCouldInteract(eventToStart);
@@ -67,4 +67,17 @@ function IsColliding(PosX, PosY, Offsets)
   if (PointX >=  width || PointX <= 0 || PointY <= 0 || PointY >= height) {Colliding = true;}
  }
   return Colliding;
+}
+
+function WhichRoom(val){
+  switch(val){
+    case 0: return("Eren's room!"); break;
+    case 1: return("the hallway!"); break;
+    case 2: return("Gary's room!"); break;
+    case 3: return("Sam's room!"); break;
+    case 4: return("the kitchen!"); break;
+    case 5: return("Tod's room!"); break;
+    case 6: return("Alex's room!"); break;
+  }
+  return ("");
 }

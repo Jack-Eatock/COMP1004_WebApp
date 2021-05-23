@@ -9,7 +9,7 @@ var Images = []
 var CurrentRoom = 0;
 
 ///////// Cheats \\\\\\\\\
-var RateOfDecreaseMult = 4; // Multiplies decrease rate.
+var RateOfDecreaseMult = 2; // Multiplies decrease rate.
 
 ///////// Bedroom Vars \\\\\\\\\
 var IsPlantAlive = true;
@@ -18,12 +18,15 @@ var IsPlantAlive = true;
 var ImageToShow = 0;
 var IsInteracting = false;
 
+let fontPixel;
+
 /** 
  * Preload all the data into a easily accessed variable.
  */
 function preload() {
   data = loadJSON('Maps.json');  // loads required data
   dialog = loadJSON('Dialog.json');  // loads required data
+  fontPixel = loadFont('Fonts/ARCADECLASSIC.TTF');
 }
 
 /** 
@@ -51,6 +54,9 @@ function setup() {
   imageMode(CENTER);
   //rectMode(CENTER);
   
+  console.log("Game Starting!");
+ 
+
   frameRate(60);
   var cnv = createCanvas(1200, 700);
   cnv.parent("MyCanvas"); // Centred by CSS

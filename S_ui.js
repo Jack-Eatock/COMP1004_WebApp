@@ -65,8 +65,10 @@ function DrawUI(){
     image(Images[31] , 175 , 46); // Energy
     image(Images[33] , 250 , 46); // Study
 
+   
     // Finally add the text
     noStroke(); fill(255); textSize(15); textAlign(CENTER);
+
     text("Hunger", 100, 94);
     text("Energy", 175, 94);
     text("Study", 250, 94);
@@ -74,6 +76,8 @@ function DrawUI(){
     text("Date", 1005, 94);
     text("Time", 1082, 94);
 
+    //textFont(fontBold);
+    
     // Add later
     text("£" + Cash, 923, 55);
     textSize(23);text(ScaledDay, 1005, 66);textSize(20);

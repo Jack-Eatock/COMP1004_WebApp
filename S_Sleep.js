@@ -1,6 +1,8 @@
 var mode = 0;
 
 function Sleeping() {
+
+    if (keyIsDown(69)){ Reset(); IsInteracting = false;}
     if (mode == 1){Sleep(); return;}
 
     // Will loop while in menu
@@ -19,7 +21,7 @@ function Sleeping() {
 
 
 function Sleep(){
-    EnergyPercent.percent += 5; ScaledHours += 8;
+    EnergyPercent.percent += 25; ScaledHours += 8;
     Reset(); IsInteracting = false;
 }
 

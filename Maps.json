@@ -276,7 +276,9 @@
       {"Index" : 34, "url" : "Sprites/UI/PiggyBank.png"},
       {"Index" : 35, "url" : "Sprites/UI/Calander.png"},
 
-      {"Index" : 36, "url" : "Sprites/UI/Watch.png"}
+      {"Index" : 36, "url" : "Sprites/UI/Watch.png"},
+
+      {"Index" : 37, "url" : "Sprites/UI/MonitorUI.png"}
 
 
 
