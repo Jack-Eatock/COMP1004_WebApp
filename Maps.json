@@ -178,12 +178,18 @@
 
         "ObjectsToDraw":[
             {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 7 },
-            {"Type" : 1, "x" : 850 ,"y" : 470, "imgNum" : 11 }
+            {"Type" : 1, "x" : 500 ,"y" : 440, "imgNum" : 11 }
  
         ],
 
         "AnimationsToDraw":[
-           
+            {"Name" :"Animation Test",
+                "Frames": [
+                    {"x":660,"y":214,"imgNum" : 15,  "Duration" : 0.25 },
+                    {"x":660,"y":214,"imgNum" : 16,  "Duration" : 0.25  },
+                    {"x":660,"y":214,"imgNum" : 17,  "Duration" : 0.25  },
+                    {"x":660,"y":214,"imgNum" : 18,  "Duration" : 0.25  }
+                ] }  
         ],
 
         "Colliders":[
