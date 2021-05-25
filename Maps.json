@@ -83,10 +83,8 @@
         "spawnLocationY" : 350,
 
         "ObjectsToDraw":[
-            {"Name" :"Room" , "Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 4 },
-            {"Type" : 0, "Colour" : 0, "x" : 321 , "y" : 409 ,"width" : 227 , "height" : 124},
-            {"Type" : 0, "Colour" : 0, "x" : 321 , "y" : 173 ,"width" : 76 , "height"  : 236},
-            {"Type" : 0, "Colour" : 0, "x" : 397 , "y" : 173 ,"width" : 171, "height"  : 76}
+            {"Name" :"Room" , "Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 4 }
+
         ],
 
         "AnimationsToDraw":[
