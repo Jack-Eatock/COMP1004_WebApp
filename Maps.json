@@ -138,7 +138,13 @@
             {"NameOfCollider" : "Wall Right", "Type" : 0, "X1" : 859,"Y1": 0, "X2" : 1200,"Y2" : 700},
             {"NameOfCollider" : "Wall Bot"  , "Type" : 0, "X1" : 0,"Y1": 533, "X2" : 1200,"Y2" : 700},
 
-            {"NameOfCollider" : "Interact - Sam", "Type" : 2, "Event" : 5 ,"X1" : 650,"Y1": 300, "X2" : 730,"Y2" : 400}
+            {"NameOfCollider" : "Interact - Sam", "Type" : 2, "Event" : 5 ,"X1" : 650,"Y1": 300, "X2" : 730,"Y2" : 400},
+
+            {"NameOfCollider" : "CollGuitar"  , "Type" : 0, "X1" : 327,"Y1": 461, "X2" : 550,"Y2" : 515},
+            {"NameOfCollider" : "CollGuitar"  , "Type" : 0, "X1" : 401,"Y1": 416, "X2" : 443,"Y2" : 465},
+            {"NameOfCollider" : "CollBed"  ,    "Type" : 0, "X1" : 601,"Y1": 420, "X2" : 874,"Y2" : 533},
+            {"NameOfCollider" : "CollRight"  ,    "Type" : 0, "X1" : 778,"Y1": 247, "X2" : 860,"Y2" : 533},
+            {"NameOfCollider" : "CollRight"  ,    "Type" : 0, "X1" : 526,"Y1": 172, "X2" : 858,"Y2" : 249}
         ]
 
     },
@@ -199,7 +205,12 @@
             {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 278, "Y2" : 633},
             {"NameOfCollider" : "Wall Rtop",  "Type" : 0, "X1" : 780, "Y1" : 0, "X2" : 1200, "Y2" : 365},
             {"NameOfCollider" : "Wall Bot",   "Type" : 0, "X1" : 0, "Y1" : 563, "X2" : 970, "Y2" : 703},
-            {"NameOfCollider" : "Wall RBot",  "Type" : 0, "X1" : 956, "Y1" : 350, "X2" : 1200, "Y2" : 700}
+            {"NameOfCollider" : "Wall RBot",  "Type" : 0, "X1" : 956, "Y1" : 350, "X2" : 1200, "Y2" : 700},
+
+            {"NameOfCollider" : "Col Bed",  "Type" : 0, "X1" : 727, "Y1" : 462, "X2" : 1200, "Y2" : 562},
+            {"NameOfCollider" : "Col BedSidetable",  "Type" : 0, "X1" : 904, "Y1" : 364, "X2" : 1200, "Y2" : 464},
+            {"NameOfCollider" : "Col Desk",  "Type" : 0, "X1" : 481, "Y1" : 191, "X2" : 1200, "Y2" : 271},
+            {"NameOfCollider" : "Col Guitar",  "Type" : 0, "X1" : 278, "Y1" : 193, "X2" : 331, "Y2" : 254}
         ]
 
     },
@@ -211,11 +222,17 @@
 
         "ObjectsToDraw":[
             {"Type" : 1, "x" : 600 ,"y" : 350, "imgNum" : 8 },
-            {"Type" : 1, "x" : 400 ,"y" : 250, "imgNum" : 9 }
+            {"Type" : 1, "x" : 520 ,"y" : 300, "imgNum" : 9 }
         ],
 
         "AnimationsToDraw":[
-           
+            {"Name" :"Animation Test",
+                "Frames": [
+                    {"x":450,"y":152,"imgNum" : 15,  "Duration" : 0.25 },
+                    {"x":450,"y":152,"imgNum" : 16,  "Duration" : 0.25  },
+                    {"x":450,"y":152,"imgNum" : 17,  "Duration" : 0.25  },
+                    {"x":450,"y":152,"imgNum" : 18,  "Duration" : 0.25  }
+                ] }  
         ],
 
         "Colliders":[

@@ -117,11 +117,31 @@ function UpdateText(ref, newText){
     noStroke(0); fill(255); textSize(20); textAlign(LEFT);
   
     switch(ref){
-      case (0): { text(newText, 800, 25); break;}
-      case (1): { text(newText, 500, 25); break;}
+      case (0): { text(newText, 500, 25); break;}
       case (2): { text(newText, 200, 25); break;}
       case (3): {textAlign(CENTER); text(newText, width/2, 640); break;}
     }
-  
-  
+
+  }
+
+  function DebugText(){
+
+    noStroke(0); fill(255); textSize(20); textAlign(LEFT);
+    text( 'Room : ' + CurrentRoom, 350, 25);
+    text("Hunger : " + Math.ceil(HungerPercent.percent), 350, 50);
+    text("Study : " + Math.ceil(StudyPercent.percent), 500, 50);
+    text("Energy : " + Math.ceil(EnergyPercent.percent), 200, 50);
+    text("Sanity : " + Math.ceil(SanityPercent.percent), 650, 50);
+    text("Cash : " + Cash, 650, 25);
+    text("Day : " + ScaledDay, 800, 25);
+    text("Time : " +  ScaledHourToDisplay + " : " + ScaledMinToDisplay, 800, 50);
+    text("Hallway : 1", 200 ,75);
+    text("Gary : 2", 300 ,75);
+    text("Sam : 3", 400 ,75);
+    text("Kitchen : 4", 500 ,75);
+    text("Tod : 5", 610 ,75);
+    text("Alex : 6", 700 ,75);
+    text("Bedroom : 7", 800 ,75);
+    text("(DEBUGGING)", 1000 ,25);
+
   }

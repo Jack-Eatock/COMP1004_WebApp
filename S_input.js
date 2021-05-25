@@ -1,13 +1,28 @@
+
 /** 
  * Reads player input
  */
+
+ function keyPressed(){
+  //console.log(keyCode);
+ // Debug mode on off ` key
+      if (keyIsDown(223)){
+        if (ModeDebug == true){ModeDebug = false;}
+        else if (ModeDebug == false){ModeDebug = true;}
+      }
+        
+  }
+
+
 function GetInput() {
+ 
+    
 
     // No input should work, other than space to close the image
     if (IsInteracting){
       //if (keyIsDown(69)){ IsInteracting = false;}
       return;
-    }
+    } 
   
     // Keycode 65 = a   Keycode 87 = s
     if (keyIsDown(65) && keyIsDown(68))  {  PlayerMovement.x =  0; }
@@ -27,7 +42,6 @@ function GetInput() {
   
     // Player tries to Interact
     if (keyIsDown(32)){ PlayerTriedToInteract();}
-  
+    
   } 
 
-  

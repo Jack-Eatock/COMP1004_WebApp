@@ -10,9 +10,6 @@ var AnimationIdentity = 0;
  */
 function DrawRoom(){
 
-    //if (keyIsDown(65)){ currentRoom = 1 ;}
-    if (ModeDebug){UpdateText(1, 'CurrentRoom ' + CurrentRoom)};
-  
     // DISPLAY STATIC IMAGES \\
   
     // First we need to obtain a reference to all the Images we should load and their positions.
@@ -40,6 +37,11 @@ function DrawRoom(){
   
     // Not all objects are static. Some are animated. Display them \\
     DisplayAnimations();
+
+    // Finally display any debugs, if debugging
+
+    //if (keyIsDown(65)){ currentRoom = 1 ;}
+  //  if (ModeDebug){UpdateText(1, 'CurrentRoom ' + CurrentRoom); }
   } 
   
   

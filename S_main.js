@@ -103,7 +103,7 @@ function draw() {
   GetInput();
   MoveCharacter();
 
-  if (!ModeDebug){DrawUI();}
+  if (!ModeDebug){DrawUI();} else{ DebugText();}
 
   // Notifications
   UpdateText(3, 'Notice : ' + PlayerNotice);
