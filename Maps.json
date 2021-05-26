@@ -169,6 +169,7 @@
             {"NameOfCollider" : "Wall Top",   "Type" : 0, "X1" : 30 , "Y1" : 0, "X2" : 1170, "Y2" : 110},
             {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0 , "Y1" : 0, "X2" : 30, "Y2" : 700},
             {"NameOfCollider" : "Wall Right",  "Type" : 0, "X1" : 1170 , "Y1" : 0, "X2" : 1200, "Y2" : 700},
+            {"NameOfCollider" : "Coll Fridge",  "Type" : 0, "X1" : 29 , "Y1" : 118, "X2" : 550, "Y2" : 236},
 
             {"NameOfCollider" : "Interact - Fridge", "Type" : 2, "Event" : 6 ,"X1" : 30,"Y1": 120, "X2" : 153,"Y2" : 240}
         ]
@@ -208,7 +209,9 @@
             {"NameOfCollider" : "Col Bed",  "Type" : 0, "X1" : 727, "Y1" : 462, "X2" : 1200, "Y2" : 562},
             {"NameOfCollider" : "Col BedSidetable",  "Type" : 0, "X1" : 904, "Y1" : 364, "X2" : 1200, "Y2" : 464},
             {"NameOfCollider" : "Col Desk",  "Type" : 0, "X1" : 481, "Y1" : 191, "X2" : 1200, "Y2" : 271},
-            {"NameOfCollider" : "Col Guitar",  "Type" : 0, "X1" : 278, "Y1" : 193, "X2" : 331, "Y2" : 254}
+            {"NameOfCollider" : "Col Guitar",  "Type" : 0, "X1" : 278, "Y1" : 193, "X2" : 331, "Y2" : 254},
+
+            {"NameOfCollider" : "Interact - Tod", "Type" : 2, "Event" : 7 ,"X1" : 430,"Y1": 330, "X2" : 590,"Y2" : 490}
         ]
 
     },
@@ -240,7 +243,9 @@
             {"NameOfCollider" : "Wall Bot",   "Type" : 0, "X1" : 294, "Y1" : 566, "X2" : 906, "Y2" : 700},
             {"NameOfCollider" : "Wall Top",   "Type" : 0, "X1" : 294, "Y1" : 0, "X2" : 906, "Y2" : 127},
             {"NameOfCollider" : "Wall Left",  "Type" : 0, "X1" : 0, "Y1" : 0, "X2" : 294, "Y2" : 700},
-            {"NameOfCollider" : "Wall Right", "Type" : 0, "X1" : 906, "Y1" : 0, "X2" : 1200, "Y2" : 700}
+            {"NameOfCollider" : "Wall Right", "Type" : 0, "X1" : 906, "Y1" : 0, "X2" : 1200, "Y2" : 700},
+
+            {"NameOfCollider" : "Interact - Alex", "Type" : 2, "Event" : 8 ,"X1" : 440,"Y1": 220, "X2" : 600,"Y2" : 380}
         ]
     }
 
@@ -299,7 +304,27 @@
 
       {"Index" : 36, "url" : "Sprites/UI/Watch.png"},
 
-      {"Index" : 37, "url" : "Sprites/UI/MonitorUI.png"}
+      {"Index" : 37, "url" : "Sprites/UI/MonitorUI.png"},
+
+      {"Index" : 38, "url" : "Sprites/Emails/TemplateEmail.png"},
+
+      {"Index" : 39, "url" : "Sprites/Emails/TemplateEmailFalse.png"},
+
+      {"Index" : 40, "url" : "Sprites/Emails/FakeEmail1.png"},
+
+      {"Index" : 41, "url" : "Sprites/Emails/FakeEmail2.png"},
+
+      {"Index" : 42, "url" : "Sprites/Emails/FakeEmail3.png"},
+
+      {"Index" : 43, "url" : "Sprites/Emails/RealEmail1.png"},
+
+      {"Index" : 44, "url" : "Sprites/Emails/RealEmail2.png"},
+
+      {"Index" : 45, "url" : "Sprites/UI/FridgeOutline.png"},
+
+      {"Index" : 46, "url" : "Sprites/Characters/Outlines/Char_Tod_Outline.png"},
+
+      {"Index" : 47, "url" : "Sprites/Characters/Outlines/Char_Alex_Outline.png"}
 
 
 

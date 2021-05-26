@@ -26,6 +26,7 @@ let fontPixel;
 function preload() {
   data = loadJSON('Maps.json');  // loads required data
   dialog = loadJSON('Dialog.json');  // loads required data
+  questions = loadJSON('StudyQuestions.json');// loads required data
   fontPixel = loadFont('Fonts/ARCADECLASSIC.TTF');
 }
 
@@ -88,12 +89,13 @@ function draw() {
       case(2):  Sleeping();        break; // Bed
       case(3):  NoteInteraction();   break;  // Notes
       case(4):  PcInteraction();   break;  // Plant
-      case(5):  PcInteraction();   break; // Sam
+      case(5):  Communication(charNum);   break; // Sam
       case(6):  FridgeInteraction();   break; // Fridge
-      case(7):  FridgeInteraction();   break;
+      case(7):  Communication(charNum);   break;
+      case(8):  Communication(charNum);   break;
     }
 
-    if (!ModeDebug){DrawUI();}
+    if (!ModeDebug){DrawUI();} else{ DebugText();}
     // Don't wanna do anything else in this func 
     return;
   }

@@ -2,6 +2,7 @@
 ///////// Triggers \\\\\\\\\
 var CurTrigEvent = 0;
 var BooleanDecisionRequired = false;
+var charNum = 0;
 
 /** 
  * - Should be run when the player presses the interact key
@@ -18,8 +19,10 @@ function PlayerTriedToInteract(){
       case (2):  IsInteracting = true; break; // Bed interactable.
       case (3):  IsInteracting = true; break; // Nothin interactable.
       case (4):  IsPlantAlive = false; Images[23] = Images[24]; break; // Make plant dead.
-      case (5):  IsInteracting = true; CharacterInteraction(0); break; // Char interaction
+      case (5):  IsInteracting = true;  charNum = 0; break; // Sam Char interaction
       case (6):  IsInteracting = true; break; // Fridge Interaction
+      case (7):  IsInteracting = true;  charNum = 1; break; // Tod Char interaction
+      case (8):  IsInteracting = true;  charNum = 2; break; // Alex Char interaction
 
       default:
         break;
@@ -41,7 +44,9 @@ function PlayerTriedToInteract(){
       case (3): image(Images[21] , 366.5  , 292 ); PlayerNotice = startText + "Notes!"; break; // Notes
       case (4): if (IsPlantAlive == true){ image(Images[25] , 599  ,176 );}  PlayerNotice = startText + "Plant!"; break;
       case (5): image(Images[27] , 702  , 353 ); PlayerNotice = startText + "Sam!";   break; // Char interaction
-      case (6): rect(30,120,123,120); PlayerNotice = startText + "Fridge"; break; // Fridge Interaction
+      case (6):image(Images[45] , 91  , 180 ); PlayerNotice = startText + "Fridge"; break; // Fridge Interaction
+      case (7): image(Images[46] , 510  , 410 ); PlayerNotice = startText + "Tod!"; break;
+     case (8): image(Images[47] , 520  , 300 ); PlayerNotice = startText + "Alex!"; break;
 
       default:
         break;

@@ -10,7 +10,6 @@
         if (ModeDebug == true){ModeDebug = false;}
         else if (ModeDebug == false){ModeDebug = true;}
       }
-        
   }
 
 

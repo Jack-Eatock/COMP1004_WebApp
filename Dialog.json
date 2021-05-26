@@ -1,9 +1,69 @@
 {
-    "Sam":
-    {
+    "Characters": [
+        
+        {
+            "name" : "Sam",
+            "convonum" : 0,
 
-        "Text1" : "This is a test chat"
+            "convo" : [
 
-    }
+                { "text" : "Hi my name is Sam,"  },
+                { "text" : "I study Politcis but I really love making music.."  },
+                { "text" : "I am from Hart Town in Lakue."  },
+                { "text" : "1 Waffle waffle waffle waffle"  },
+                { "text" : "2 Waffle waffle waffle waffle"  },
+                { "text" : "3 Waffle waffle waffle waffle"  },
+                { "text" : "4 Waffle waffle waffle waffle"  }
+                
+
+            ],
+
+           
+            "imgNum" : 10
+        },
+
+        {
+            "name" : "Tod",
+            "convonum" : 1,
+
+            "convo" : [
+
+                { "text" : "Hi I am Tod,"  },
+                { "text" : "I study mathematics."  },
+                { "text" : "I am really hoping to lose weight during this lockdown!"  },
+                { "text" : "2 Waffle waffle waffle waffle"  },
+                { "text" : "3 Waffle waffle waffle waffle"  },
+                { "text" : "4 Waffle waffle waffle waffle"  }
+
+            ],
+
+           
+            "imgNum" : 11
+        },
+
+
+        {
+            "name" : "Alex",
+            "convonum" : 2,
+
+            "convo" : [
+
+                { "text" : "Hi I am Alex,"  },
+                { "text" : "As you can tell, I am an incredible painter."  },
+                { "text" : "One might even go as far to say the best!"  },
+                { "text" : "Do me a favour and stop distracting me.."  },
+                { "text" : "1"  },
+                { "text" : "2"  },
+                { "text" : "3"  }
+
+            ],
+
+           
+            "imgNum" : 9
+        }
+
+    ]
+
+  
 
 }
