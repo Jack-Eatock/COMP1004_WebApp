@@ -1,3 +1,6 @@
+To play: https://jack-eatock.github.io/COMP1004_WebApp/
+
+
 # COMP1004_WebApp
  This project is being developed for my first year studying Computer Science at Plymouth University.
 
