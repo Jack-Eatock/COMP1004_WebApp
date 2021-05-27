@@ -4,6 +4,12 @@ To play: https://jack-eatock.github.io/COMP1004_WebApp/
 # COMP1004_WebApp
  This project is being developed for my first year studying Computer Science at Plymouth University.
 
+## Controls
+WASD - Move around.
+Space - Interact with objects.
+Backtick (The key to the left of 1) - Debug menu toggle.
+E - Exit out of any menu.
+
 ## Progress
 ![GitHub Logo](https://i.gyazo.com/79a139607770794a6b18a1960b4b5c57.png)
 
