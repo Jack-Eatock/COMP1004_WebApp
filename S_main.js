@@ -9,7 +9,7 @@ var Images = []
 var CurrentRoom = 0;
 
 ///////// Cheats \\\\\\\\\
-var RateOfDecreaseMult = 2; // Multiplies decrease rate.
+var RateOfDecreaseMult = 1.4; // Multiplies decrease rate.
 
 ///////// Bedroom Vars \\\\\\\\\
 var IsPlantAlive = true;
@@ -71,6 +71,12 @@ function setup() {
  */
 function draw() {
   background(0);   // Set background to black.
+
+  if (SanityPercent.percent <= 0){
+    text("GAME OVER!", 600, 450);
+
+    return;
+  }
 
   // Debug Tools \\
   CheatTeleportToRoom(true);

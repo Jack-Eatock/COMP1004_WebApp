@@ -7,8 +7,8 @@
 
             "convo" : [
 
-                { "text" : "Hi my name is Sam,"  },
-                { "text" : "I study Politcis but I really love making music.."  },
+                { "text" : "Hi my name is Sam, How are you?"  },
+                { "text" : "I study Politics but I really love making music.."  },
                 { "text" : "I am from Hart Town in Lakue."  },
                 { "text" : "1 Waffle waffle waffle waffle"  },
                 { "text" : "2 Waffle waffle waffle waffle"  },
@@ -28,7 +28,7 @@
 
             "convo" : [
 
-                { "text" : "Hi I am Tod,"  },
+                { "text" : "Hi I am Tod, great to meet you :)"  },
                 { "text" : "I study mathematics."  },
                 { "text" : "I am really hoping to lose weight during this lockdown!"  },
                 { "text" : "2 Waffle waffle waffle waffle"  },

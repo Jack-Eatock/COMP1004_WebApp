@@ -68,7 +68,7 @@ function WorkGameMode(){
         if (!Rewarded){
             
             if (userGuess == qdata[questionNum].result){
-                Cash += 2;
+                Cash += 5;
                 EnergyPercent.percent -+ 1;
             }
     
@@ -84,7 +84,7 @@ function WorkGameMode(){
             textSize(25);
             text("Well done!", 600, 290);
             textAlign(LEFT);
-            text("+ 2 Cash", 530, 330);
+            text("+ 5 Cash", 530, 330);
             text("- 1 Energy", 530, 370);
         }
 
@@ -156,7 +156,7 @@ function StudyGameMode(){
         if (!Rewarded){
 
             if (userGuess == qdata[questionNum].answer){
-                StudyPercent.percent += 10;
+                StudyPercent.percent += 25;
                 EnergyPercent.percent -= 1;
             }
             else{
@@ -173,7 +173,7 @@ function StudyGameMode(){
             textSize(25);
             text("Well done!", 600, 290);
             textAlign(LEFT);
-            text("+ 10 Study", 530, 330);
+            text("+ 25 Study", 530, 330);
             text("- 1 Energy", 530, 370);
 
            
